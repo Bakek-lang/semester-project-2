@@ -11,7 +11,7 @@
     ></script>
     <title>Auction House</title>
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen">
     <header>
       <nav
         class="flex justify-between items-center p-2 bg-white border-gray-500 border-b"
@@ -24,5 +24,35 @@
         </a>
       </nav>
     </header>
+    <main class="flex-grow">
+      <form class="max-w-md mx-auto flex justify-center pt-2">
+        <label for="search-field" class="sr-only">Search</label>
+        <input
+          type="text"
+          id="search-field"
+          class="border rounded-lg border-gray-500 text-gray-700 pl-4"
+          placeholder="Search..."
+        />
+        <button
+          type="button"
+          class="text-white bg-blue-700 font-medium rounded-lg text-sm px-3 py-1.5 ml-2"
+        >
+          Search
+        </button>
+      </form>
+    </main>
+    <footer
+      class="bg-white border-t border-gray-500 flex justify-between items-center p-2"
+    >
+      <a href="#">
+        <img
+          class="h-8"
+          src="logo/Logo-mobile-1.svg"
+          alt="Logo for Auction House"
+        />
+      </a>
+      <p>&#169;Auction House</p>
+      <a class="underline" href="#">My account</a>
+    </footer>
   </body>
 </html>
