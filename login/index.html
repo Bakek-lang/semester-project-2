@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../src/index.css" />
+    <script type="module" src="../index.js"></script>
     <script
       src="https://kit.fontawesome.com/d59adeadcb.js"
       crossorigin="anonymous"
@@ -35,13 +36,13 @@
           </div>
           <form method="POST">
             <div class="flex flex-col mb-4">
-              <label for="username">Username:</label>
+              <label for="email">Email:</label>
               <div class="mt-2">
                 <input
                   class="border border-gray-700 w-full p-2"
                   type="text"
-                  id="username"
-                  name="username"
+                  id="email"
+                  name="email"
                   required
                 />
               </div>
@@ -65,6 +66,10 @@
               >
                 Login
               </button>
+            </div>
+            <div class="flex mt-2">
+              <p>Create an account?</p>
+              <a class="underline ml-2" href="../register/">Sign up</a>
             </div>
           </form>
         </div>
