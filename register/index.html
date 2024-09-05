@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../src/index.css" />
+    <script type="module" src="../index.js"></script>
+    <script
+      src="https://kit.fontawesome.com/d59adeadcb.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Auction House</title>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <header class="bg-slate-500">
+      <nav
+        class="flex justify-between items-center p-2 bg-white border-gray-500 border-b"
+      >
+        <a href="#">
+          <img src="../logo/Logo-mobile-1.svg" alt="Logo for Auction House" />
+        </a>
+        <a>
+          <i class="fa-solid fa-bars text-4xl"></i>
+        </a>
+      </nav>
+    </header>
+    <main class="flex-grow">
+      <div class="flex items-center justify-center mt-3">
+        <div
+          class="flex flex-col justify-center items-center border border-gray-700 p-6"
+        >
+          <div class="text-center mb-4">
+            <img src="../logo/Logo-mobile-1.svg" alt="" />
+            <h1 class="text-xl font-bold mt-4">Register</h1>
+          </div>
+          <form method="POST">
+            <div class="flex flex-col mb-4">
+              <label for="username">Username:</label>
+              <div class="mt-2">
+                <input
+                  class="border border-gray-700 w-full p-2"
+                  type="text"
+                  id="username"
+                  name="username"
+                  required
+                />
+              </div>
+            </div>
+            <div class="flex flex-col mb-4">
+              <label for="email">Email:</label>
+              <div class="mt-2">
+                <input
+                  class="border border-gray-700 w-full p-2"
+                  type="text"
+                  id="email"
+                  name="email"
+                  required
+                />
+              </div>
+            </div>
+            <div class="flex flex-col mb-4">
+              <label for="password">Password:</label>
+              <div class="mt-2">
+                <input
+                  class="border border-gray-700 w-full p-2"
+                  type="password"
+                  id="password"
+                  name="password"
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <button
+                type="submit"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Sign up
+              </button>
+            </div>
+            <div class="flex mt-2">
+              <p>Already got an account?</p>
+              <a class="underline ml-2" href="../login/">Log in</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="bg-white border-t border-gray-500 flex justify-between items-center p-2"
+    >
+      <a href="#">
+        <img
+          class="h-8"
+          src="../logo/Logo-mobile-1.svg"
+          alt="Logo for Auction House"
+        />
+      </a>
+      <p>&#169;Auction House</p>
+      <a class="underline" href="#">My account</a>
+    </footer>
+  </body>
+</html>
