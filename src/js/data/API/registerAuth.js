@@ -10,8 +10,6 @@ export async function registerAuth() {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(username, email, password);
-
     await registerUser(username, email, password);
   });
 }

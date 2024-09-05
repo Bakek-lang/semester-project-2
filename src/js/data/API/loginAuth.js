@@ -9,8 +9,6 @@ export async function loginAuth() {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
-
     await loginUser(email, password);
     window.location.href = "/";
   });

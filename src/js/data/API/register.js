@@ -11,7 +11,5 @@ export async function registerUser(name, email, password) {
 
   if (response.ok) {
     return response.json();
-  } else {
-    console.log("Could not register");
   }
 }

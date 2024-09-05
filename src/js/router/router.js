@@ -6,7 +6,6 @@ export function handleRoute() {
     case "/register/":
       registerPage();
     case "/login/":
-      console.log("login page");
       loginPage();
   }
 }

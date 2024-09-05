@@ -15,7 +15,5 @@ export async function loginUser(email, password) {
     save("accessToken", accessToken);
     save("profile", profile);
     return profile;
-  } else {
-    console.log("did not work");
   }
 }
