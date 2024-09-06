@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../src/index.css" />
+    <script defer src="../thumbnail.js"></script>
+    <script
+      src="https://kit.fontawesome.com/d59adeadcb.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Auction House</title>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <header class="bg-slate-500">
+      <nav
+        class="flex justify-between items-center p-2 bg-white border-gray-500 border-b"
+      >
+        <a href="#">
+          <img src="../logo/Logo-mobile-1.svg" alt="Logo for Auction House" />
+        </a>
+        <a>
+          <i class="fa-solid fa-bars text-4xl"></i>
+        </a>
+      </nav>
+    </header>
+    <main class="flex-grow">
+      <div class="flex flex-col mt-3 p-4">
+        <div>
+          <div class="media-gallery">
+            <img
+              id="hero-image"
+              class="justify-center object-cover rounded-lg h-64 w-full"
+              src="../src/assets/images/pierre-chatel-innocenti-pxoZSTdAzeU-unsplash.jpg"
+              alt="Hero Image"
+            />
+
+            <div class="thumbnail-row flex">
+              <img
+                src="https://images.unsplash.com/photo-1725017710391-a7766d56dfb8?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Thumbnail 1"
+                class="thumbnail w-1/4 object-cover rounded-lg cursor-pointer border-4 border-transparent hover:border-gray-500"
+              />
+              <img
+                src="../src/assets/images/pierre-chatel-innocenti-pxoZSTdAzeU-unsplash.jpg"
+                alt="Thumbnail 2"
+                class="thumbnail w-1/4 rounded-lg object-cover cursor-pointer border-4 border-transparent hover:border-gray-500"
+              />
+              <img
+                src="https://plus.unsplash.com/premium_photo-1689974467601-54a99c7fd90b?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Thumbnail 3"
+                class="thumbnail w-1/4 h-24 rounded-lg object-cover cursor-pointer border-4 border-transparent hover:border-gray-500"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1719937050679-c3a2c9c67b0f?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Thumbnail 4"
+                class="thumbnail w-1/4 rounded-lg object-cover cursor-pointer border-4 border-transparent hover:border-gray-500"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="ml-1">
+          <div class="mt-2 flex items-center">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1689974467601-54a99c7fd90b?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Seller Avatar"
+              class="w-10 h-10 rounded-full"
+            />
+            <a class="ml-2 font-semibold underline">John Doe</a>
+          </div>
+
+          <h1 class="text-3xl font-bold mt-4">Auction Item Title</h1>
+          <p class="text-gray-700 mt-2">This is the description</p>
+
+          <div class="grid grid-cols-2 gap-4 mt-4 text-left">
+            <div class="items-center">
+              <p>Current bid:</p>
+              <div class="flex items-center">
+                <i class="text-2xl">💵</i>
+                <p class="ml-1">10 credits</p>
+              </div>
+            </div>
+            <div class="items-center">
+              <p>Time left:</p>
+              <div class="flex items-center">
+                <i class="text-2xl">⏳</i>
+                <p class="ml-1">2h 15 min</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <p>Place a bid:</p>
+            <input
+              type="text"
+              class="border w-1/3 rounded py-2 text-right pr-4"
+            />
+          </div>
+          <div class="flex mt-4">
+            <button class="bg-orange-600 py-2 px-6 rounded">Confirm Bid</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="bg-white border-t border-gray-500 flex justify-between items-center p-2"
+    >
+      <a href="#">
+        <img
+          class="h-8"
+          src="../logo/Logo-mobile-1.svg"
+          alt="Logo for Auction House"
+        />
+      </a>
+      <p>&#169;Auction House</p>
+      <a class="underline" href="#">My account</a>
+    </footer>
+  </body>
+</html>
