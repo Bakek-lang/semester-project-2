@@ -36,6 +36,7 @@ export function createPost(listing) {
       "rounded-lg",
       "cursor-pointer",
       "border-4",
+      "border",
       "border-transparent"
     );
 
