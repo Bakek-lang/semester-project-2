@@ -1,3 +1,5 @@
+import { addCardClickListener } from "../eventListeners/cardClick";
+
 export function createCards(listings) {
   const container = document.querySelector("[data-container]");
   container.innerHTML = "";
@@ -16,7 +18,8 @@ export function createCards(listings) {
       "rounded-xl",
       "bg-white",
       "mt-6",
-      "drop-shadow-lg"
+      "drop-shadow-lg",
+      "cursor-pointer"
     );
 
     const img = document.createElement("img");
@@ -59,7 +62,6 @@ export function createCards(listings) {
       { icon: "💵", text: lastBidAmount },
       { icon: "⏳", text: listings.data[i].endsAt },
       { icon: "🔨", text: numberBids },
-      { icon: "👤", text: listings.data[i].seller.name },
     ];
 
     gridItems.forEach((item) => {
@@ -79,6 +81,21 @@ export function createCards(listings) {
       grid.append(flexDiv);
     });
 
+    const sellerFlexDiv = document.createElement("div");
+    sellerFlexDiv.classList.add("flex", "items-center");
+
+    const sellerIconElement = document.createElement("i");
+    sellerIconElement.classList.add("text-3xl");
+    sellerIconElement.textContent = "👤";
+
+    const sellerLink = document.createElement("a");
+    sellerLink.href = "#";
+    sellerLink.textContent = listings.data[i].seller.name;
+    sellerLink.classList.add("underline", "text-blue-500", "ml-1");
+
+    sellerFlexDiv.append(sellerIconElement, sellerLink);
+    grid.append(sellerFlexDiv);
+
     card.append(grid);
 
     const buttonContainer = document.createElement("div");
@@ -91,6 +108,8 @@ export function createCards(listings) {
     buttonContainer.append(button);
 
     card.append(buttonContainer);
+
+    addCardClickListener(card, listings.data[i].id);
 
     container.append(card);
   }
