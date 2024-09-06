@@ -1,3 +1,3 @@
-import { handleRoute } from "./src/js/router/router";
+import { handleRoute } from "./src/js/router/router.js";
 
 handleRoute();
