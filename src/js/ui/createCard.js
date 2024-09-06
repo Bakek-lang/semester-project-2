@@ -1,4 +1,5 @@
 import { addCardClickListener } from "../eventListeners/cardClick";
+import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
 
 export function createCards(listings) {
   const container = document.querySelector("[data-container]");
@@ -92,6 +93,7 @@ export function createCards(listings) {
     sellerLink.href = "#";
     sellerLink.textContent = listings.data[i].seller.name;
     sellerLink.classList.add("underline", "text-blue-500", "ml-1");
+    sellerLink.setAttribute("data-attribute", "seller-link");
 
     sellerFlexDiv.append(sellerIconElement, sellerLink);
     grid.append(sellerFlexDiv);
@@ -111,6 +113,8 @@ export function createCards(listings) {
 
     addCardClickListener(card, listings.data[i].id);
 
+    const sellerLinkTag = card.querySelector("[data-attribute='seller-link']");
+    addSellerLinkClickListener(sellerLinkTag);
     container.append(card);
   }
 }
