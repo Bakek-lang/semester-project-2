@@ -1,6 +1,7 @@
 import { homePage } from "../pages/home.js";
 import { loginPage } from "../pages/login.js";
 import { postPage } from "../pages/post.js";
+import { profilePage } from "../pages/profile.js";
 import { registerPage } from "../pages/register.js";
 
 export function handleRoute() {
@@ -16,6 +17,9 @@ export function handleRoute() {
       break;
     case "/post/":
       postPage();
+      break;
+    case "/profile/":
+      profilePage();
       break;
   }
 }
