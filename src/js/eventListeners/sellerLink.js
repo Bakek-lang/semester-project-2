@@ -25,8 +25,10 @@ export function addSellerLinkClickListener(sellerLink) {
         }
       );
 
-      console.log(sellerProfile);
-      save("sellerProfile", sellerProfile);
+      console.log(sellerProfile.data);
+      save("sellerProfile", sellerProfile.data);
+
+      window.location.href = "/profile/";
     } catch (error) {
       console.error("finding profile didnt work");
     }
