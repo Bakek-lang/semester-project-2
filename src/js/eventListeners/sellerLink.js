@@ -37,8 +37,8 @@ export function addSellerLinkClickListener(sellerLink) {
         }
       );
 
-      console.log(sellerProfile.data);
-      save("sellerProfile", sellerProfile.data);
+      console.log(sellerProfile);
+      save("sellerProfile", sellerProfile);
 
       window.location.href = "/profile/";
     } catch (error) {
