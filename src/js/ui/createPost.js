@@ -53,7 +53,7 @@ export function createPost(listing) {
   const sellerFlex = document.createElement("div");
   sellerFlex.classList.add("mt-2", "flex", "items-center");
 
-  const sellerAvatar = document.createElement("div");
+  const sellerAvatar = document.createElement("img");
   sellerAvatar.src = listing.seller.avatar.url;
   sellerAvatar.alt = listing.seller.avatar.alt;
   sellerAvatar.classList.add("w-10", "h-10", "rounded-full");
@@ -64,6 +64,7 @@ export function createPost(listing) {
   sellerLink.classList.add("ml-2", "font-semibold", "underline");
 
   sellerFlex.append(sellerAvatar, sellerLink);
+  sellerDiv.append(sellerFlex);
 
   const title = document.createElement("h1");
   title.classList.add("text-3xl", "font-bold", "mt-4");
