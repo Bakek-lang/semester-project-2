@@ -1,3 +1,5 @@
+import { createCards } from "./createCard";
+
 export function createProfile(profile) {
   const main = document.querySelector("main");
   main.innerHTML = "";
@@ -25,29 +27,34 @@ export function createProfile(profile) {
 
   const img = document.createElement("img");
   img.classList.add("w-24", "h-24", "rounded-lg", "mx-auto");
-  img.src = profile.avatar.url;
-  img.alt = profile.avatar.alt;
+  img.src = profile.data[0].seller.avatar.url;
+  img.alt = profile.data[0].seller.avatar.alt;
 
   const h1 = document.createElement("h1");
   h1.classList.add("text-2xl", "font-semibold", "mt-4");
-  h1.textContent = profile.name;
+  h1.textContent = profile.data[0].seller.name;
 
   const bio = document.createElement("p");
   bio.classList.add("mt-4");
-  bio.textContent = profile.bio || "";
+  bio.textContent = profile.data[0].seller.bio || "";
 
   cardDiv.append(img, h1, bio);
 
-  const listingsContainer = document.createElement("div");
-  listingsContainer.classList.add("mt-4", "w-full");
+  const listingHeadingDiv = document.createElement("div");
+  listingHeadingDiv.classList.add("mt-4", "w-full");
 
   const listingsHeading = document.createElement("h2");
   listingsHeading.classList.add("text-3xl", "font-bold", "mb-6", "text-left");
   listingsHeading.textContent = "Listings";
 
-  listingsContainer.append(listingsHeading);
+  listingHeadingDiv.append(listingsHeading);
 
-  containerDiv.append(cardDiv, listingsContainer);
+  const listingsContainer = document.createElement("div");
+  listingsContainer.classList.add("mt-4", "w-full");
+
+  containerDiv.append(cardDiv, listingHeadingDiv, listingsContainer);
 
   main.append(containerDiv);
+
+  createCards(profile, listingsContainer);
 }
