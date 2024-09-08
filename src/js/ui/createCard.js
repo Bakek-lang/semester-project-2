@@ -1,9 +1,9 @@
 import { addCardClickListener } from "../eventListeners/cardClick";
 import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
 
-export function createCards(listings) {
-  const container = document.querySelector("[data-container]");
+export function createCards(listings, container) {
   container.innerHTML = "";
+
   for (let i = 0; i < listings.data.length; i++) {
     if (
       !listings.data[i].media ||

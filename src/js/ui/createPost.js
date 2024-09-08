@@ -1,3 +1,4 @@
+import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
 export function createPost(listing) {
   const container = document.querySelector("main");
   container.innerHTML = "";
@@ -53,7 +54,7 @@ export function createPost(listing) {
   const sellerFlex = document.createElement("div");
   sellerFlex.classList.add("mt-2", "flex", "items-center");
 
-  const sellerAvatar = document.createElement("div");
+  const sellerAvatar = document.createElement("img");
   sellerAvatar.src = listing.seller.avatar.url;
   sellerAvatar.alt = listing.seller.avatar.alt;
   sellerAvatar.classList.add("w-10", "h-10", "rounded-full");
@@ -62,8 +63,10 @@ export function createPost(listing) {
   sellerLink.href = "#";
   sellerLink.textContent = listing.seller.name;
   sellerLink.classList.add("ml-2", "font-semibold", "underline");
+  sellerLink.setAttribute("data-attribute", "seller-link");
 
   sellerFlex.append(sellerAvatar, sellerLink);
+  sellerDiv.append(sellerFlex);
 
   const title = document.createElement("h1");
   title.classList.add("text-3xl", "font-bold", "mt-4");
@@ -103,7 +106,6 @@ export function createPost(listing) {
   currentBidValueDiv.append(currentBidIcon, currentBidValue);
   currentBidDiv.append(currentBidValueDiv);
 
-  // time left
   const timeLeftDiv = document.createElement("div");
   timeLeftDiv.classList.add("items-center");
 
@@ -146,7 +148,6 @@ export function createPost(listing) {
     "pr-4"
   );
 
-  // Confirm button
   const buttonDiv = document.createElement("div");
   buttonDiv.classList.add("flex", "mt-4");
 
@@ -161,6 +162,10 @@ export function createPost(listing) {
   sellerDiv.append(bidSection);
 
   flexContainer.append(sellerDiv);
+  const sellerLinkTag = flexContainer.querySelector(
+    "[data-attribute='seller-link']"
+  );
+  addSellerLinkClickListener(sellerLinkTag);
 
   container.append(flexContainer);
 }
