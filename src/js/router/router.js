@@ -7,6 +7,7 @@ import { registerPage } from "../pages/register.js";
 export function handleRoute() {
   switch (location.pathname) {
     case "/":
+    case "/hometemplate.html":
       homePage();
       break;
     case "/register/":
