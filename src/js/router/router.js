@@ -3,6 +3,7 @@ import { loginPage } from "../pages/login.js";
 import { postPage } from "../pages/post.js";
 import { profilePage } from "../pages/profile.js";
 import { registerPage } from "../pages/register.js";
+import { settingsPage } from "../pages/settings.js";
 
 export function handleRoute() {
   switch (location.pathname) {
@@ -20,6 +21,9 @@ export function handleRoute() {
       break;
     case "/profile/":
       profilePage();
+      break;
+    case "/settings/":
+      settingsPage();
       break;
   }
 }
