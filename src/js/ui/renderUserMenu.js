@@ -1,12 +1,8 @@
 export function renderUserMenu(profile) {
-  console.log("renderMenu");
-  console.log("profile", profile);
   const profileImage = document.querySelector("[data-profile='user-image']");
 
   profileImage.src = profile.avatar.url;
   profileImage.alt = profile.avatar.alt;
-
-  console.log("no problem");
 
   const profileName = document.querySelector("[data-profile='user-name']");
 
