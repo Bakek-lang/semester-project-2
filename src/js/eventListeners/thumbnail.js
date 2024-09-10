@@ -6,7 +6,7 @@ export function handleThumbnails() {
     thumbnail.addEventListener("click", function () {
       heroImage.src = this.src;
 
-      thumbnails.forEach((thumb) => thumb.classList.remove("border-blue-500"));
+      thumbnails.forEach((thumb) => thumb.classList.remove("border-blue-900"));
       thumbnails.forEach((thumb) =>
         thumb.classList.remove("border-transparent")
       );
