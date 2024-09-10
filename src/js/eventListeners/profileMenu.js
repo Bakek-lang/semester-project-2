@@ -1,4 +1,4 @@
-export function hamburgerMenuToggle() {
+export function profileMenuToggle() {
   const menuButton = document.querySelector(
     "[data-dropdown-toggle='profile-dropdown']"
   );
