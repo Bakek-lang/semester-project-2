@@ -1,6 +1,6 @@
 import { createCards } from "./createCard";
 
-export function createProfile(profile) {
+export function createProfile(profile, listings) {
   const main = document.querySelector("main");
   main.innerHTML = "";
 
@@ -27,16 +27,16 @@ export function createProfile(profile) {
 
   const img = document.createElement("img");
   img.classList.add("w-24", "h-24", "rounded-lg", "mx-auto");
-  img.src = profile.data[0].seller.avatar.url;
-  img.alt = profile.data[0].seller.avatar.alt;
+  img.src = profile.avatar.url;
+  img.alt = profile.avatar.alt;
 
   const h1 = document.createElement("h1");
   h1.classList.add("text-2xl", "font-semibold", "mt-4");
-  h1.textContent = profile.data[0].seller.name;
+  h1.textContent = profile.name;
 
   const bio = document.createElement("p");
   bio.classList.add("mt-4");
-  bio.textContent = profile.data[0].seller.bio || "";
+  bio.textContent = profile.bio || "";
 
   cardDiv.append(img, h1, bio);
 
@@ -56,5 +56,5 @@ export function createProfile(profile) {
 
   main.append(containerDiv);
 
-  createCards(profile, listingsContainer);
+  createCards(listings, listingsContainer);
 }
