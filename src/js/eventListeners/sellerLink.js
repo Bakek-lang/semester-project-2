@@ -8,7 +8,7 @@ import {
 import { fetchData } from "../data/API/fetch.js";
 import { save } from "../localstorage/save";
 import { load } from "../localstorage/load.js";
-import { listings } from "../data/API/getListings";
+
 export function addSellerLinkClickListener(sellerLink) {
   sellerLink.addEventListener("click", async (event) => {
     event.stopPropagation();
@@ -17,11 +17,7 @@ export function addSellerLinkClickListener(sellerLink) {
     console.log(sellerName);
 
     try {
-      console.log(
-        API_BASE + API_AUCTION + API_PROFILES + sellerName + API_LISTINGS
-      );
       const sellerProfile = await fetchData(
-        // API_BASE + API_AUCTION + API_PROFILES + "/" + sellerName,
         API_BASE +
           API_AUCTION +
           API_PROFILES +
@@ -37,7 +33,6 @@ export function addSellerLinkClickListener(sellerLink) {
         }
       );
 
-      console.log(sellerProfile);
       save("sellerProfile", sellerProfile);
 
       window.location.href = "/profile/";
