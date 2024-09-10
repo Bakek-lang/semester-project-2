@@ -28,6 +28,12 @@ export function createCards(listings, container) {
     img.src = listings.data[i].media[0].url;
     img.alt = listings.data[i].media[0].alt;
 
+    img.onload = () => {
+      container.append(card);
+    };
+
+    img.onerror = () => {};
+
     card.append(img);
 
     const contentDiv = document.createElement("div");
@@ -115,6 +121,5 @@ export function createCards(listings, container) {
 
     const sellerLinkTag = card.querySelector("[data-attribute='seller-link']");
     addSellerLinkClickListener(sellerLinkTag);
-    container.append(card);
   }
 }
