@@ -24,49 +24,109 @@
           <div class="flex items-center">
             <button
               type="button"
+              class="flex text-sm rounded-full mr-1"
+              id="user-menu-button"
+              aria-expanded="false"
+              data-dropdown-toggle="profile-dropdown"
+            >
+              <span class="sr-only">Open user menu</span>
+              <i class="fa-solid fa-circle-user rounded-full text-4xl"></i>
+              <!---<img
+                class="w-8 h-8 rounded-full"
+                src=""
+                alt=""
+              />
+              --->
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              class="z-50 absolute top-full right-0 mr-4 text-base bg-white divide-y divide-gray-200 rounded-lg shadow border border-gray-200"
+              id="profile-dropdown"
+            >
+              <div class="px-4 py-3">
+                <img
+                  class="w-16 h-16 rounded-full mx-auto mb-2 border"
+                  src="/logo/Logo-mobile-1.svg"
+                  alt=""
+                />
+                <span class="block text-sm text-gray-900">John Doe</span>
+                <span class="block text-sm text-gray-500 truncate"
+                  >Johndoe123@gmail.com</span
+                >
+                <span class="block text-md text-gray-700 mt-2"
+                  >Credits: 1000</span
+                >
+              </div>
+              <ul class="py-2" aria-labelledby="user-menu-button">
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700"
+                    >Profile</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700"
+                    >View listings</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700"
+                    >Make a listing</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700"
+                    >Sign out</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <button
+              type="button"
               data-collapse-toggle="navbar-user"
               class="inline-flex items-center p-2 w-14 h-14 text-sm justify-center"
             >
               <span class="sr-only">Open main menu</span>
               <i class="fa-solid fa-bars text-4xl"></i>
             </button>
-          </div>
-
-          <div
-            class="hidden absolute top-full z-20 left-0 px-4 items-center justify-between w-full"
-            id="navbar-user"
-          >
-            <ul
-              class="flex flex-col font-medium p-4 border border-gray-800 rounded-lg bg-white"
+            <!---- Dropdown menu --->
+            <div
+              class="hidden absolute top-full z-20 left-0 px-4 items-center justify-between w-full"
+              id="navbar-user"
             >
-              <li>
-                <a
-                  href="#"
-                  class="block py-2 px-3 bg-blue-400 rounded text-xl"
-                  aria-current="page"
-                  >Home</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block py-2 px-3 text-gray-900 rounded text-xl"
-                  >Create a listing</a
-                >
-              </li>
-              <li>
-                <a href="" class="block py-2 px-3 text-gray-900 rounded text-xl"
-                  >Profile</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block py-2 px-3 text-gray-900 rounded text-xl"
-                  >Logout</a
-                >
-              </li>
-            </ul>
+              <ul
+                class="flex flex-col font-medium p-4 border border-gray-800 rounded-lg bg-white"
+              >
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 px-3 bg-blue-400 rounded text-xl"
+                    aria-current="page"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 px-3 text-gray-900 rounded text-xl"
+                    >Create a listing</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href=""
+                    class="block py-2 px-3 text-gray-900 rounded text-xl"
+                    >Profile</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 px-3 text-gray-900 rounded text-xl"
+                    >Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>
