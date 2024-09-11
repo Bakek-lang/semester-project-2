@@ -1,9 +1,10 @@
+import { updateSettings } from "../data/API/updateSettings";
 import { load } from "../localstorage/load";
 import { createCards } from "./createCard";
 
 export function createProfile(profile, listings) {
   // for the if statement
-  const profileStorage = load("profile");
+  const profileStorage = load("personalProfile");
   const profileStorageName = profileStorage.name;
 
   const main = document.querySelector("main");
@@ -50,8 +51,10 @@ export function createProfile(profile, listings) {
       event.preventDefault();
 
       const imageUrl = imageInput.value;
+      const imageAlt = imageAltInput.value;
       const bioText = bioInput.value;
 
+      updateSettings(imageUrl, imageAlt, bioText);
       // update img and bio
       console.log("Image URL:", imageUrl);
       console.log("Bio:", bioText);
@@ -78,6 +81,28 @@ export function createProfile(profile, listings) {
     );
 
     imageUploadContainer.append(imageInput);
+
+    const imageAltContainer = document.createElement("div");
+    imageAltContainer.classList.add(
+      "flex",
+      "items-center",
+      "justify-between",
+      "mt-2"
+    );
+
+    const imageAltInput = document.createElement("input");
+    imageAltInput.type = "text";
+    imageAltInput.placeholder = "Enter short description of image";
+    imageAltInput.classList.add(
+      "border",
+      "border-gray-400",
+      "rounded",
+      "px-4",
+      "py-2",
+      "w-full"
+    );
+
+    imageAltContainer.append(imageAltInput);
 
     const bioContainer = document.createElement("div");
     bioContainer.classList.add("flex", "flex-col", "mt-2");
@@ -107,7 +132,12 @@ export function createProfile(profile, listings) {
       "mt-2"
     );
 
-    form.append(imageUploadContainer, bioContainer, updateButton);
+    form.append(
+      imageUploadContainer,
+      imageAltContainer,
+      bioContainer,
+      updateButton
+    );
     cardDiv.append(img, h1, bio, form);
   } else {
     cardDiv.append(img, h1, bio);
