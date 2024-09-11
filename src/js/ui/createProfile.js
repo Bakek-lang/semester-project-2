@@ -47,6 +47,19 @@ export function createProfile(profile, listings) {
   bio.textContent = profile.bio || "";
 
   if (profile.name === profileStorageName) {
+    const form = document.createElement("form");
+    form.classList.add("flex", "flex-col");
+    form.onsubmit = (event) => {
+      event.preventDefault();
+
+      const imageUrl = imageInput.value;
+      const bioText = bioInput.value;
+
+      // update img and bio
+      console.log("Image URL:", imageUrl);
+      console.log("Bio:", bioText);
+    };
+
     const imageUploadContainer = document.createElement("div");
     imageUploadContainer.classList.add(
       "flex",
@@ -67,23 +80,10 @@ export function createProfile(profile, listings) {
       "w-full"
     );
 
-    const submitButton = document.createElement("button");
-    submitButton.textContent = "Update";
-    submitButton.classList.add(
-      "bg-blue-600",
-      "text-white",
-      "px-4",
-      "py-2",
-      "rounded",
-      "ml-2"
-    );
-
-    imageUploadContainer.append(imageInput, submitButton);
-
-    // bio
+    imageUploadContainer.append(imageInput);
 
     const bioContainer = document.createElement("div");
-    bioContainer.classList.add("flex", "flex-col");
+    bioContainer.classList.add("flex", "flex-col", "mt-2");
 
     const bioInput = document.createElement("textarea");
     bioInput.placeholder = "Enter your bio";
@@ -96,9 +96,12 @@ export function createProfile(profile, listings) {
       "w-full"
     );
 
-    const bioSubmitButton = document.createElement("button");
-    bioSubmitButton.textContent = "Update";
-    bioSubmitButton.classList.add(
+    bioContainer.append(bioInput);
+
+    const updateButton = document.createElement("button");
+    updateButton.type = "submit";
+    updateButton.textContent = "Update";
+    updateButton.classList.add(
       "bg-blue-600",
       "text-white",
       "px-4",
@@ -107,9 +110,8 @@ export function createProfile(profile, listings) {
       "mt-2"
     );
 
-    bioContainer.append(bioInput, bioSubmitButton);
-
-    cardDiv.append(img, h1, imageUploadContainer, bio, bioContainer);
+    form.append(imageUploadContainer, bioContainer, updateButton);
+    cardDiv.append(img, h1, form, bio);
   } else {
     cardDiv.append(img, h1, bio);
   }
