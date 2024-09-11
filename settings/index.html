@@ -42,30 +42,45 @@
                   class="w-16 h-16 rounded-full mx-auto mb-2 border"
                   src="/logo/Logo-mobile-1.svg"
                   alt=""
+                  data-profile="user-image"
                 />
-                <span class="block text-sm text-gray-800">John Doe</span>
-                <span class="block text-sm text-gray-400 truncate"
+                <span
+                  data-profile="user-name"
+                  class="block text-sm text-gray-800"
+                  >John Doe</span
+                >
+                <span
+                  data-profile="user-email"
+                  class="block text-sm text-gray-400"
                   >Johndoe123@gmail.com</span
                 >
                 <div class="flex items-center">
                   <span class="block text-md text-gray-700 mt-2">Credits:</span>
-                  <span class="block text-md text-gray-700 mt-2 ml-2"
+                  <span
+                    data-profile="user-credits"
+                    class="block text-md text-gray-700 mt-2 ml-2"
                     >1000</span
                   >
                 </div>
                 <div class="flex items-center">
                   <span class="block text-md text-gray-700 mt-2">Wins:</span>
-                  <span class="block text-md text-gray-700 mt-2 ml-2">15</span>
+                  <span
+                    data-profile="user-wins"
+                    class="block text-md text-gray-700 mt-2 ml-2"
+                    >15</span
+                  >
                 </div>
               </div>
               <ul class="py-2">
                 <li>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700"
+                  <a
+                    href="/settings/"
+                    class="block px-4 py-2 text-sm text-gray-700"
                     >Profile</a
                   >
                 </li>
                 <li>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700"
+                  <a href="/" class="block px-4 py-2 text-sm text-gray-700"
                     >View listings</a
                   >
                 </li>
@@ -85,72 +100,11 @@
         </div>
       </nav>
     </header>
-    <main class="flex-grow">
-      <div class="flex items-center justify-center mt-3">
-        <div
-          class="flex flex-col justify-center items-center border border-gray-700 p-6"
-        >
-          <div class="text-center mb-4">
-            <img src="../logo/Logo-mobile-1.svg" alt="" />
-            <h1 class="text-xl font-bold mt-4">Register</h1>
-          </div>
-          <form method="POST">
-            <div class="flex flex-col mb-4">
-              <label for="username">Username:</label>
-              <div class="mt-2">
-                <input
-                  class="border border-gray-700 w-full p-2"
-                  type="text"
-                  id="username"
-                  name="username"
-                  required
-                />
-              </div>
-            </div>
-            <div class="flex flex-col mb-4">
-              <label for="email">Email:</label>
-              <div class="mt-2">
-                <input
-                  class="border border-gray-700 w-full p-2"
-                  type="text"
-                  id="email"
-                  name="email"
-                  required
-                />
-              </div>
-            </div>
-            <div class="flex flex-col mb-4">
-              <label for="password">Password:</label>
-              <div class="mt-2">
-                <input
-                  class="border border-gray-700 w-full p-2"
-                  type="password"
-                  id="password"
-                  name="password"
-                  required
-                />
-              </div>
-            </div>
-            <div>
-              <button
-                type="submit"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              >
-                Sign up
-              </button>
-            </div>
-            <div class="flex mt-2">
-              <p>Already got an account?</p>
-              <a class="underline ml-2" href="../login/">Log in</a>
-            </div>
-          </form>
-        </div>
-      </div>
-    </main>
+    <main class="flex-grow items-center"></main>
     <footer
       class="bg-white border-t border-gray-500 flex justify-between items-center p-2"
     >
-      <a href="#">
+      <a href="/">
         <img
           class="h-8"
           src="../logo/Logo-mobile-1.svg"
