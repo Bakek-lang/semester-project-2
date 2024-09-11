@@ -1,6 +1,14 @@
+import { load } from "../localstorage/load";
 import { createCards } from "./createCard";
 
 export function createProfile(profile, listings) {
+  const profileStorage = load("profile");
+  const profileStorageName = profileStorage.name;
+
+  if (profile.name === profileStorageName) {
+    // adding buttons and stuff inside this file
+  }
+
   const main = document.querySelector("main");
   main.innerHTML = "";
 
@@ -38,7 +46,73 @@ export function createProfile(profile, listings) {
   bio.classList.add("mt-4");
   bio.textContent = profile.bio || "";
 
-  cardDiv.append(img, h1, bio);
+  if (profile.name === profileStorageName) {
+    const imageUploadContainer = document.createElement("div");
+    imageUploadContainer.classList.add(
+      "flex",
+      "items-center",
+      "justify-between",
+      "mt-2"
+    );
+
+    const imageInput = document.createElement("input");
+    imageInput.type = "text";
+    imageInput.placeholder = "Enter image URL";
+    imageInput.classList.add(
+      "border",
+      "border-gray-400",
+      "rounded",
+      "px-4",
+      "py-2",
+      "w-full"
+    );
+
+    const submitButton = document.createElement("button");
+    submitButton.textContent = "Update";
+    submitButton.classList.add(
+      "bg-blue-600",
+      "text-white",
+      "px-4",
+      "py-2",
+      "rounded",
+      "ml-2"
+    );
+
+    imageUploadContainer.append(imageInput, submitButton);
+
+    // bio
+
+    const bioContainer = document.createElement("div");
+    bioContainer.classList.add("flex", "flex-col");
+
+    const bioInput = document.createElement("textarea");
+    bioInput.placeholder = "Enter your bio";
+    bioInput.classList.add(
+      "border",
+      "border-gray-400",
+      "rounded",
+      "px-4",
+      "py-2",
+      "w-full"
+    );
+
+    const bioSubmitButton = document.createElement("button");
+    bioSubmitButton.textContent = "Update";
+    bioSubmitButton.classList.add(
+      "bg-blue-600",
+      "text-white",
+      "px-4",
+      "py-2",
+      "rounded",
+      "mt-2"
+    );
+
+    bioContainer.append(bioInput, bioSubmitButton);
+
+    cardDiv.append(img, h1, imageUploadContainer, bio, bioContainer);
+  } else {
+    cardDiv.append(img, h1, bio);
+  }
 
   const listingHeadingDiv = document.createElement("div");
   listingHeadingDiv.classList.add("mt-4", "w-full");
