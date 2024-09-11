@@ -2,12 +2,9 @@ import { load } from "../localstorage/load";
 import { createCards } from "./createCard";
 
 export function createProfile(profile, listings) {
+  // for the if statement
   const profileStorage = load("profile");
   const profileStorageName = profileStorage.name;
-
-  if (profile.name === profileStorageName) {
-    // adding buttons and stuff inside this file
-  }
 
   const main = document.querySelector("main");
   main.innerHTML = "";
@@ -111,7 +108,7 @@ export function createProfile(profile, listings) {
     );
 
     form.append(imageUploadContainer, bioContainer, updateButton);
-    cardDiv.append(img, h1, form, bio);
+    cardDiv.append(img, h1, bio, form);
   } else {
     cardDiv.append(img, h1, bio);
   }
