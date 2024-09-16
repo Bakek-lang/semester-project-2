@@ -1,10 +1,6 @@
 import { API_AUCTION, API_BASE, API_LISTINGS } from "./constants.js";
 import { fetchData } from "./fetch.js";
 
-// export const listings = await fetchData(
-//   `${API_BASE}${API_AUCTION}${API_LISTINGS}?_bids=true&_seller=true`
-// );
-
 async function fetchAllListings() {
   let allListings = [];
   let currentPage = 1;
@@ -15,7 +11,6 @@ async function fetchAllListings() {
     `${API_BASE}${API_AUCTION}${API_LISTINGS}?_bids=true&_seller=true&page=${currentPage}&limit=${LIMIT}`
   );
   allListings = allListings.concat(firstResponse.data);
-  console.log("All listings after first response: ", allListings);
   totalPageCount = firstResponse.meta.pageCount;
 
   while (currentPage < totalPageCount) {
@@ -25,7 +20,6 @@ async function fetchAllListings() {
     );
 
     allListings = allListings.concat(nextResponse.data);
-    console.log("All Listings in while loop: ", allListings);
   }
 
   const sortedListings = allListings.sort((a, b) => {
@@ -48,8 +42,6 @@ async function fetchAllListings() {
 
     return new Date(a.endsAt) - new Date(b.endsAt);
   });
-
-  console.log("sorted listings: ", sortedListings);
 
   return { data: sortedListings };
 }
