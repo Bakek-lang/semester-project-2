@@ -1,5 +1,6 @@
 import { addCardClickListener } from "../eventListeners/cardClick";
 import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
+import { calculateTimeLeft } from "../helpers/calculateTimeLeft";
 
 export function createCards(listings, container) {
   container.innerHTML = "";
@@ -64,10 +65,11 @@ export function createCards(listings, container) {
     const numberBids = listings.data[i]._count.bids;
     const lastBidAmount =
       numberBids > 0 ? listings.data[i].bids[numberBids - 1].amount : 0;
+    const endsAt = listings.data[i].endsAt;
 
     const gridItems = [
       { icon: "💵", text: lastBidAmount },
-      { icon: "⏳", text: listings.data[i].endsAt },
+      { icon: "⏳", text: calculateTimeLeft(endsAt) },
       { icon: "🔨", text: numberBids },
     ];
 
