@@ -6,6 +6,6 @@ export function openModal() {
 
 export function closeModal() {
   const modal = document.getElementById("modal-overlay");
-  modal.classList.remove("hidden");
+  modal.classList.add("hidden");
   document.body.classList.remove("overflow-hidden");
 }
