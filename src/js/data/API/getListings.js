@@ -34,7 +34,7 @@ async function fetchAllListings() {
 
   console.log("sorted listings: ", sortedListings);
 
-  return sortedListings;
+  return { data: sortedListings };
 }
 
 export const listings = await fetchAllListings();
