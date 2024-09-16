@@ -1,4 +1,5 @@
 import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
+import { startCountdown } from "../helpers/countdown";
 export function createPost(listing) {
   const container = document.querySelector("main");
   container.innerHTML = "";
@@ -122,10 +123,11 @@ export function createPost(listing) {
 
   const timeLeftValue = document.createElement("p");
   timeLeftValue.classList.add("ml-1");
-  timeLeftValue.textContent = listing.endsAt;
 
   timeLeftValueDiv.append(timeLeftIcon, timeLeftValue);
   timeLeftDiv.append(timeLeftValueDiv);
+
+  startCountdown(listing.endsAt, timeLeftValue);
 
   grid.append(currentBidDiv, timeLeftDiv);
 
