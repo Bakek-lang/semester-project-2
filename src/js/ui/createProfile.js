@@ -153,7 +153,7 @@ export function createProfile(profile, listings) {
   listingHeadingDiv.append(listingsHeading);
 
   const listingsContainer = document.createElement("div");
-  listingsContainer.classList.add("mt-4", "w-full");
+  listingsContainer.classList.add("mt-4", "w-full", "flex", "flex-wrap");
 
   containerDiv.append(cardDiv, listingHeadingDiv, listingsContainer);
 
