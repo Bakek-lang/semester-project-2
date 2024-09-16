@@ -123,7 +123,6 @@ export function createPost(listing) {
 
   const timeLeftValue = document.createElement("p");
   timeLeftValue.classList.add("ml-1");
-  // timeLeftValue.textContent = listing.endsAt;
 
   timeLeftValueDiv.append(timeLeftIcon, timeLeftValue);
   timeLeftDiv.append(timeLeftValueDiv);
