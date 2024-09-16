@@ -12,7 +12,7 @@
     ></script>
     <title>Auction House</title>
   </head>
-  <body class="flex flex-col min-h-screen overflow-hidden">
+  <body class="flex flex-col min-h-screen">
     <header class="bg-slate-500 relative">
       <nav class="bg-white border-gray-500 border-b">
         <div
@@ -118,6 +118,7 @@
       </form>
       <div class="mx-auto flex mt-6 justify-center">
         <button
+          id="create-listing-button"
           type="button"
           class="py-3 px-4 bg-blue-600 rounded-lg text-white"
         >
@@ -126,7 +127,7 @@
       </div>
       <div
         id="modal-overlay"
-        class="absolute inset-0 bg-gray-800 bg-opacity-75 z-20 flex justify-center"
+        class="absolute inset-0 bg-gray-800 bg-opacity-75 z-20 justify-center hidden"
       >
         <div
           class="relative flex flex-col mt-28 rounded-lg z-30 bg-white border border-blue-800 p-8 max-w-lg"
