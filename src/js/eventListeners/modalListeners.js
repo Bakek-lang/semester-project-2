@@ -9,8 +9,6 @@ export function modalListeners() {
 
   const closeModalButton = document.getElementById("close-modal");
 
-  console.log(closeModalButton);
-
   closeModalButton.addEventListener("click", () => {
     closeModal();
   });
