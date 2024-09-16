@@ -124,7 +124,7 @@
           New Listing
         </button>
       </div>
-      <div class="flex flex-col border border-blue-800 items-center p-4">
+      <div class="hidden border border-blue-800 items-center p-4">
         <div class="mb-4 w-full">
           <label for="title" class="text-sm font-medium text-gray-700"
             >Title <span class="text-red-500">*</span></label
@@ -167,19 +167,30 @@
         </div>
         <div class="mx-auto bg-blue flex justify-between gap-x-4">
           <div class="mb-4 w-full">
-            <label for="duration" class="text-sm font-medium text-gray-700">Auction Time</label>
-            <input type="number" id="duration" class="border border-gray-400 rounded px-4 py-2 w-full h-12">
-
+            <label for="duration" class="text-sm font-medium text-gray-700"
+              >Auction Time</label
+            >
+            <input
+              type="number"
+              id="duration"
+              class="border border-gray-400 rounded px-4 py-2 w-full h-12"
+            />
           </div>
           <div class="mb-4 w-full">
-          <label for="unit" class="text-sm font-medium text-gray-700">Time Unit</label>
-          <select id="unit" class="border border-gray-400 rounded px-4 py-2 w-full h-12"
-          >
-            <option value="hours">Hours</option>
-            <option value="days">Days</option>
-            <option value="weeks">Weeks</option>
-          </select>
-        </div></div>
+            <label for="unit" class="text-sm font-medium text-gray-700"
+              >Time Unit</label
+            >
+            <select
+              id="unit"
+              class="border border-gray-400 rounded px-4 py-2 w-full h-12"
+            >
+              <option value="hours">Hours</option>
+              <option value="days">Days</option>
+              <option value="weeks">Weeks</option>
+            </select>
+          </div>
+        </div>
+      </div>
       <div
         data-attribute="container"
         class="flex items-center justify-center flex-wrap"
