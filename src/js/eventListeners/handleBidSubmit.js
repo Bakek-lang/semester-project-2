@@ -1,3 +1,10 @@
+import {
+  API_AUCTION,
+  API_BASE,
+  API_BIDS,
+  API_KEY,
+  API_LISTINGS,
+} from "../data/API/constants";
 import { checkCredits } from "../errorhandling/checks/checkCredits";
 import { checkHighestBid } from "../errorhandling/checks/checkHighestBid";
 import { disableSubmitButton } from "../errorhandling/disableSubmitButton";
@@ -13,7 +20,7 @@ export function handleBidSubmit(listing) {
   const userCredits = profile.credits;
   const currentHighestBid = listing.bids[0].amount || 0;
 
-  submitButton.addEventListener("click", (event) => {
+  submitButton.addEventListener("click", async (event) => {
     event.preventDefault();
 
     const bidAmount = parseInt(bidInput.value);
@@ -31,5 +38,34 @@ export function handleBidSubmit(listing) {
 
     errorDiv.classList.add("hidden");
     errorDiv.textContent = "";
+
+    const listingId = listing.id;
+    const apiEndpoint =
+      API_BASE + API_AUCTION + API_LISTINGS + "/" + listingId + API_BIDS;
+
+    const amountBody = {
+      amount: bidAmount,
+    };
+
+    try {
+      const response = await fetch(apiEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${load("accessToken")}`,
+          "X-Noroff-API-Key": API_KEY,
+        },
+        body: JSON.stringify(amountBody),
+      });
+
+      if (!response.ok) {
+        console.error("Failed to make bid: ", error);
+      }
+
+      console.log("response: ", response);
+      window.location.reload();
+    } catch (error) {
+      console.error("Could not make bid on listing: ", error);
+    }
   });
 }
