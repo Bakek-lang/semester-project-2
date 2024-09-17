@@ -16,7 +16,8 @@ export function handleBidSubmit(listing) {
 
   const profile = load("personalProfile");
   const userCredits = profile.credits;
-  const currentHighestBid = listing.bids[0].amount || 0;
+  const currentHighestBid =
+    listing.bids && listing.bids.length > 0 ? listing.bids[0].amount : 0;
 
   submitButton.addEventListener("click", async (event) => {
     event.preventDefault();
