@@ -6,3 +6,4 @@ export const API_LOGIN = "/login";
 export const API_AUCTION = "/auction";
 export const API_LISTINGS = "/listings";
 export const API_PROFILES = "/profiles";
+export const API_BIDS = "/bids";
