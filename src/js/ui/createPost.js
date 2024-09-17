@@ -1,6 +1,7 @@
 import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
 import { updateTimeAgo } from "../helpers/calculateBidTime";
 import { startCountdown } from "../helpers/countdown";
+import { isExpired } from "../helpers/isExpired";
 export function createPost(listing) {
   console.log("this is listing on post specific", listing);
   const container = document.querySelector("main");
@@ -139,42 +140,46 @@ export function createPost(listing) {
 
   sellerDiv.append(grid);
 
-  const bidSection = document.createElement("form");
-  bidSection.classList.add("mt-6", "flex", "flex-col");
+  if (isExpired(listing.endsAt)) {
+    console.log("hello");
+  } else {
+    const bidSection = document.createElement("form");
+    bidSection.classList.add("mt-6", "flex", "flex-col");
 
-  const bidLabel = document.createElement("label");
-  bidLabel.textContent = "Place a bid:";
+    const bidLabel = document.createElement("label");
+    bidLabel.textContent = "Place a bid:";
 
-  const bidInput = document.createElement("input");
-  bidInput.setAttribute("id", "bid-input");
-  bidInput.type = "text";
-  bidInput.classList.add(
-    "border",
-    "w-1/3",
-    "rounded",
-    "py-2",
-    "text-right",
-    "pr-4"
-  );
+    const bidInput = document.createElement("input");
+    bidInput.setAttribute("id", "bid-input");
+    bidInput.type = "text";
+    bidInput.classList.add(
+      "border",
+      "w-1/3",
+      "rounded",
+      "py-2",
+      "text-right",
+      "pr-4"
+    );
 
-  const errorDiv = document.createElement("div");
-  errorDiv.classList.add("hidden", "text-red-600", "font-bold", "mb-2");
-  errorDiv.setAttribute("id", "error-div-bid");
+    const errorDiv = document.createElement("div");
+    errorDiv.classList.add("hidden", "text-red-600", "font-bold", "mb-2");
+    errorDiv.setAttribute("id", "error-div-bid");
 
-  const buttonDiv = document.createElement("div");
-  buttonDiv.classList.add("flex", "mt-4");
+    const buttonDiv = document.createElement("div");
+    buttonDiv.classList.add("flex", "mt-4");
 
-  const confirmButton = document.createElement("button");
-  confirmButton.type = "submit";
-  confirmButton.classList.add("bg-orange-600", "py-2", "px-6", "rounded");
-  confirmButton.textContent = "Confirm Bid";
-  confirmButton.setAttribute("id", "submit-bid-btn");
+    const confirmButton = document.createElement("button");
+    confirmButton.type = "submit";
+    confirmButton.classList.add("bg-orange-600", "py-2", "px-6", "rounded");
+    confirmButton.textContent = "Confirm Bid";
+    confirmButton.setAttribute("id", "submit-bid-btn");
 
-  bidSection.append(bidLabel, errorDiv, bidInput);
-  buttonDiv.append(confirmButton);
-  bidSection.append(buttonDiv);
+    bidSection.append(bidLabel, errorDiv, bidInput);
+    buttonDiv.append(confirmButton);
+    bidSection.append(buttonDiv);
 
-  sellerDiv.append(bidSection);
+    sellerDiv.append(bidSection);
+  }
 
   flexContainer.append(sellerDiv);
   const sellerLinkTag = flexContainer.querySelector(
