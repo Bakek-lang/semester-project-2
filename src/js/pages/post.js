@@ -5,13 +5,16 @@ import { createPost } from "../ui/createPost.js";
 import { updateUserProfile } from "../data/API/updateUserProfile.js";
 import { bidInputListener } from "../eventListeners/bidInput.js";
 import { handleBidSubmit } from "../eventListeners/handleBidSubmit.js";
+import { isExpired } from "../helpers/isExpired.js";
 
 export function postPage() {
   const listing = findCorrectListing(listings.data);
   createPost(listing);
   handleThumbnails();
-  bidInputListener();
-  handleBidSubmit(listing);
+  if (!isExpired(listing.endsAt)) {
+    bidInputListener();
+    handleBidSubmit(listing);
+  }
 
   updateUserProfile();
 }

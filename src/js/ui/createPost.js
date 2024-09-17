@@ -1,3 +1,4 @@
+import { bidInputListener } from "../eventListeners/bidInput";
 import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
 import { updateTimeAgo } from "../helpers/calculateBidTime";
 import { startCountdown } from "../helpers/countdown";
