@@ -4,14 +4,14 @@ import { findCorrectListing } from "../data/findListing.js";
 import { createPost } from "../ui/createPost.js";
 import { updateUserProfile } from "../data/API/updateUserProfile.js";
 import { bidInputListener } from "../eventListeners/bidInput.js";
-import { highestBidListener } from "../eventListeners/highestBidListener.js";
+import { handleBidSubmit } from "../eventListeners/handleBidSubmit.js";
 
 export function postPage() {
   const listing = findCorrectListing(listings.data);
   createPost(listing);
   handleThumbnails();
   bidInputListener();
-  highestBidListener(listing);
+  handleBidSubmit(listing);
 
   updateUserProfile();
 }
