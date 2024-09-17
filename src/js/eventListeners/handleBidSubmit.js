@@ -7,8 +7,6 @@ import {
 } from "../data/API/constants";
 import { checkCredits } from "../errorhandling/checks/checkCredits";
 import { checkHighestBid } from "../errorhandling/checks/checkHighestBid";
-import { disableSubmitButton } from "../errorhandling/disableSubmitButton";
-import { enableSubmitButton } from "../errorhandling/enableSubmitButton";
 import { load } from "../localstorage/load";
 
 export function handleBidSubmit(listing) {
