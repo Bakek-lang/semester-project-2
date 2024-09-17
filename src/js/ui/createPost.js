@@ -29,25 +29,29 @@ export function createPost(listing) {
   const thumbnailRow = document.createElement("div");
   thumbnailRow.classList.add("thumbnail-row", "flex");
 
-  listing.media.forEach((mediaItem) => {
-    const img = document.createElement("img");
-    img.src = mediaItem.url;
-    img.alt = mediaItem.alt || "Thumbnail";
-    img.classList.add(
-      "thumbnail",
-      "w-1/4",
-      "object-cover",
-      "rounded-lg",
-      "cursor-pointer",
-      "border-4",
-      "border",
-      "border-transparent"
-    );
+  const listingImages = listing.media;
 
-    thumbnailRow.append(img);
-  });
+  if (listingImages.length > 1) {
+    listingImages.forEach((mediaItem) => {
+      const img = document.createElement("img");
+      img.src = mediaItem.url;
+      img.alt = mediaItem.alt || "Thumbnail";
+      img.classList.add(
+        "thumbnail",
+        "w-1/4",
+        "object-cover",
+        "rounded-lg",
+        "cursor-pointer",
+        "border-4",
+        "border",
+        "border-transparent"
+      );
 
-  mediaGallery.append(thumbnailRow);
+      thumbnailRow.append(img);
+    });
+
+    mediaGallery.append(thumbnailRow);
+  }
 
   flexContainer.append(mediaGallery);
 
