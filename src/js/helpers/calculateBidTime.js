@@ -13,14 +13,8 @@ export function updateTimeAgo(isoDate, element) {
   } else if (hours > 0) {
     element.textContent = `${hours}h ago`;
   } else if (minutes > 0) {
-    element.textContent = `${minutes}m ${seconds % 60}s`;
+    element.textContent = `${minutes}m ago`;
   } else {
-    element.textContent = `${seconds}s ago`;
-  }
-
-  if (hours === 0) {
-    setInterval(() => {
-      updateTimeAgo(isoDate, element);
-    }, 1000);
+    element.textContent = `Just now`;
   }
 }
