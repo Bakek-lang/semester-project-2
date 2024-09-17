@@ -1,4 +1,3 @@
-import { bidInputListener } from "../eventListeners/bidInput";
 import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
 import { updateTimeAgo } from "../helpers/calculateBidTime";
 import { startCountdown } from "../helpers/countdown";
@@ -7,6 +6,10 @@ export function createPost(listing) {
   console.log("this is listing on post specific", listing);
   const container = document.querySelector("main");
   container.innerHTML = "";
+
+  // reverse bids
+
+  const reverseBids = listing.bids.reverse();
 
   const flexContainer = document.createElement("div");
   flexContainer.classList.add("flex", "flex-col", "mt-3", "p-4");
@@ -171,9 +174,6 @@ export function createPost(listing) {
       const winnerInfo = document.createElement("div");
       winnerInfo.classList.add("flex", "items-center", "mt-4", "mx-auto");
 
-      // const winnerUserDiv = document.createElement("div");
-      // winnerUserDiv.classList.add("w-2/3", "flex", "items-center");
-
       const winnerImage = document.createElement("img");
       winnerImage.src = listing.bids[0].bidder.avatar.url;
       winnerImage.alt = listing.bids[0].bidder.avatar.alt;
@@ -193,8 +193,6 @@ export function createPost(listing) {
         "text-center"
       );
       winnerName.textContent = listing.bids[0].bidder.name;
-
-      // winnerUserDiv.append(winnerImage, winnerName);
 
       const winnerAmount = document.createElement("span");
       winnerAmount.classList.add(
@@ -284,8 +282,6 @@ export function createPost(listing) {
 
     headerRow.append(bidderHeader, timeAgoHeader, creditsHeader);
     bidsContainer.append(headerRow);
-
-    const reverseBids = listing.bids.reverse();
 
     reverseBids.forEach((bid, index) => {
       const row = document.createElement("div");
