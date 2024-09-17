@@ -135,13 +135,14 @@ export function createPost(listing) {
 
   sellerDiv.append(grid);
 
-  const bidSection = document.createElement("div");
-  bidSection.classList.add("mt-6");
+  const bidSection = document.createElement("form");
+  bidSection.classList.add("mt-6", "flex", "flex-col");
 
-  const bidLabel = document.createElement("p");
+  const bidLabel = document.createElement("label");
   bidLabel.textContent = "Place a bid:";
 
   const bidInput = document.createElement("input");
+  bidInput.setAttribute("id", "bid-input");
   bidInput.type = "text";
   bidInput.classList.add(
     "border",
@@ -152,14 +153,20 @@ export function createPost(listing) {
     "pr-4"
   );
 
+  const errorDiv = document.createElement("div");
+  errorDiv.classList.add("hidden", "text-red-600", "font-bold", "mb-2");
+  errorDiv.setAttribute("id", "error-div-bid");
+
   const buttonDiv = document.createElement("div");
   buttonDiv.classList.add("flex", "mt-4");
 
   const confirmButton = document.createElement("button");
+  confirmButton.type = "submit";
   confirmButton.classList.add("bg-orange-600", "py-2", "px-6", "rounded");
   confirmButton.textContent = "Confirm Bid";
+  confirmButton.setAttribute("id", "submit-bid-btn");
 
-  bidSection.append(bidLabel, bidInput);
+  bidSection.append(bidLabel, errorDiv, bidInput);
   buttonDiv.append(confirmButton);
   bidSection.append(buttonDiv);
 
