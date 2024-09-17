@@ -142,7 +142,76 @@ export function createPost(listing) {
   sellerDiv.append(grid);
 
   if (isExpired(listing.endsAt)) {
-    console.log("hello");
+    if (listing.bids.length === 0) {
+      const noWinnerDiv = document.createElement("div");
+      noWinnerDiv.classList.add("border", "mt-6", "p-8");
+
+      const noWinnerMessage = document.createElement("span");
+      noWinnerMessage.textContent = "No bids were placed on this auction";
+
+      noWinnerDiv.append(noWinnerMessage);
+      sellerDiv.append(noWinnerDiv);
+    } else {
+      grid.classList.add("hidden");
+      const winnerDiv = document.createElement("div");
+      winnerDiv.classList.add(
+        "bg-white",
+        "p-4",
+        "rounded",
+        "text-yellow-600",
+        "mt-6",
+        "border-4",
+        "drop-shadow-xl"
+      );
+
+      const winnerMessage = document.createElement("h2");
+      winnerMessage.classList.add("text-4xl", "font-bold", "text-center");
+      winnerMessage.textContent = "🎉 Congratulations to the WINNER! 🎉";
+
+      const winnerInfo = document.createElement("div");
+      winnerInfo.classList.add("flex", "items-center", "mt-4", "mx-auto");
+
+      // const winnerUserDiv = document.createElement("div");
+      // winnerUserDiv.classList.add("w-2/3", "flex", "items-center");
+
+      const winnerImage = document.createElement("img");
+      winnerImage.src = listing.bids[0].bidder.avatar.url;
+      winnerImage.alt = listing.bids[0].bidder.avatar.alt;
+      winnerImage.classList.add(
+        "w-1/3",
+        "w-16",
+        "h-16",
+        "rounded-full",
+        "mr-8"
+      );
+
+      const winnerName = document.createElement("span");
+      winnerName.classList.add(
+        "w-1/3",
+        "text-xl",
+        "font-semibold",
+        "text-center"
+      );
+      winnerName.textContent = listing.bids[0].bidder.name;
+
+      // winnerUserDiv.append(winnerImage, winnerName);
+
+      const winnerAmount = document.createElement("span");
+      winnerAmount.classList.add(
+        "w-1/3",
+        "ml-4",
+        "text-xl",
+        "font-semibold",
+        "text-center"
+      );
+      winnerAmount.textContent = `${listing.bids[0].amount} credits`;
+
+      winnerInfo.append(winnerImage, winnerName, winnerAmount);
+
+      winnerDiv.append(winnerMessage, winnerInfo);
+
+      sellerDiv.append(winnerDiv);
+    }
   } else {
     const bidSection = document.createElement("form");
     bidSection.classList.add("mt-6", "flex", "flex-col");
