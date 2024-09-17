@@ -1,4 +1,5 @@
 import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
+import { updateTimeAgo } from "../helpers/calculateBidTime";
 import { startCountdown } from "../helpers/countdown";
 export function createPost(listing) {
   console.log("this is listing on post specific", listing);
@@ -216,7 +217,8 @@ export function createPost(listing) {
 
     const timeAgoDiv = document.createElement("span");
     timeAgoDiv.classList.add("w-1/4", "flex", "items-center");
-    timeAgoDiv.textContent = "15m 20s";
+
+    updateTimeAgo(bid.created, timeAgoDiv);
 
     const creditsDiv = document.createElement("span");
     creditsDiv.classList.add("w-1/4", "flex", "items-center");
