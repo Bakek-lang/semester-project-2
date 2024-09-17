@@ -13,7 +13,7 @@ export function updateTimeAgo(isoDate, element) {
   } else if (hours > 0) {
     element.textContent = `${hours}h ago`;
   } else if (minutes > 0) {
-    element.textContent = `${minutes}m ${seconds % 60}s ago`;
+    element.textContent = `${minutes}m ${seconds % 60}s`;
   } else {
     element.textContent = `${seconds}s ago`;
   }
