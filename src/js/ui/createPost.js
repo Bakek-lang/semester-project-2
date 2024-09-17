@@ -1,6 +1,8 @@
 import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
+import { updateTimeAgo } from "../helpers/calculateBidTime";
 import { startCountdown } from "../helpers/countdown";
 export function createPost(listing) {
+  console.log("this is listing on post specific", listing);
   const container = document.querySelector("main");
   container.innerHTML = "";
 
@@ -133,13 +135,14 @@ export function createPost(listing) {
 
   sellerDiv.append(grid);
 
-  const bidSection = document.createElement("div");
-  bidSection.classList.add("mt-6");
+  const bidSection = document.createElement("form");
+  bidSection.classList.add("mt-6", "flex", "flex-col");
 
-  const bidLabel = document.createElement("p");
+  const bidLabel = document.createElement("label");
   bidLabel.textContent = "Place a bid:";
 
   const bidInput = document.createElement("input");
+  bidInput.setAttribute("id", "bid-input");
   bidInput.type = "text";
   bidInput.classList.add(
     "border",
@@ -150,14 +153,20 @@ export function createPost(listing) {
     "pr-4"
   );
 
+  const errorDiv = document.createElement("div");
+  errorDiv.classList.add("hidden", "text-red-600", "font-bold", "mb-2");
+  errorDiv.setAttribute("id", "error-div-bid");
+
   const buttonDiv = document.createElement("div");
   buttonDiv.classList.add("flex", "mt-4");
 
   const confirmButton = document.createElement("button");
+  confirmButton.type = "submit";
   confirmButton.classList.add("bg-orange-600", "py-2", "px-6", "rounded");
   confirmButton.textContent = "Confirm Bid";
+  confirmButton.setAttribute("id", "submit-bid-btn");
 
-  bidSection.append(bidLabel, bidInput);
+  bidSection.append(bidLabel, errorDiv, bidInput);
   buttonDiv.append(confirmButton);
   bidSection.append(buttonDiv);
 
@@ -169,5 +178,77 @@ export function createPost(listing) {
   );
   addSellerLinkClickListener(sellerLinkTag);
 
+  const bidsContainer = document.createElement("div");
+  bidsContainer.classList.add("mt-8", "ml-1");
+
+  const headerRow = document.createElement("div");
+  headerRow.classList.add(
+    "flex",
+    "font-bold",
+    "border-b",
+    "border-gray-300",
+    "py-2"
+  );
+
+  const bidderHeader = document.createElement("div");
+  bidderHeader.classList.add("w-1/2");
+  bidderHeader.textContent = "Bidder";
+
+  const timeAgoHeader = document.createElement("div");
+  timeAgoHeader.classList.add("w-1/4");
+  timeAgoHeader.textContent = "Time Ago";
+
+  const creditsHeader = document.createElement("div");
+  creditsHeader.classList.add("w-1/4");
+  creditsHeader.textContent = "Credits";
+
+  headerRow.append(bidderHeader, timeAgoHeader, creditsHeader);
+  bidsContainer.append(headerRow);
+
+  const reverseBids = listing.bids.reverse();
+
+  reverseBids.forEach((bid, index) => {
+    const row = document.createElement("div");
+    row.classList.add("flex", "py-2", "border-b", "border-gray-300");
+
+    const bidderUserDiv = document.createElement("div");
+    bidderUserDiv.classList.add("w-1/2", "flex", "items-center");
+
+    const bidderImage = document.createElement("img");
+    bidderImage.src = bid.bidder.avatar.url;
+    bidderImage.alt = bid.bidder.avatar.alt;
+    bidderImage.classList.add("w-8", "h-8", "rounded-full", "mr-2");
+
+    const bidderName = document.createElement("span");
+    bidderName.textContent = bid.bidder.name;
+
+    bidderUserDiv.append(bidderImage, bidderName);
+
+    const timeAgoDiv = document.createElement("span");
+    timeAgoDiv.classList.add("w-1/4", "flex", "items-center");
+
+    updateTimeAgo(bid.created, timeAgoDiv);
+
+    const creditsDiv = document.createElement("div");
+    creditsDiv.classList.add("w-1/4", "flex", "items-center");
+
+    const creditsSpan = document.createElement("span");
+    creditsSpan.textContent = bid.amount;
+
+    creditsDiv.append(creditsSpan);
+    if (index === 0) {
+      const winnerMedal = document.createElement("i");
+      winnerMedal.textContent = "🥇";
+      winnerMedal.classList.add("text-4xl", "ml-2");
+      creditsDiv.append(winnerMedal);
+      row.classList.add("font-bold");
+    }
+
+    row.append(bidderUserDiv, timeAgoDiv, creditsDiv);
+
+    bidsContainer.append(row);
+  });
+
+  flexContainer.append(bidsContainer);
   container.append(flexContainer);
 }

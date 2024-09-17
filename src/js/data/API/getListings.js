@@ -40,7 +40,7 @@ async function fetchAllListings() {
       return -1;
     }
 
-    return new Date(a.endsAt) - new Date(b.endsAt);
+    return new Date(b.endsAt) - new Date(a.endsAt);
   });
 
   return { data: sortedListings };
