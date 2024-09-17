@@ -198,7 +198,9 @@ export function createPost(listing) {
   headerRow.append(bidderHeader, timeAgoHeader, creditsHeader);
   bidsContainer.append(headerRow);
 
-  listing.bids.forEach((bid) => {
+  const reverseBids = listing.bids.reverse();
+
+  reverseBids.forEach((bid) => {
     const row = document.createElement("div");
     row.classList.add("flex", "py-2", "border-b", "border-gray-300");
 
