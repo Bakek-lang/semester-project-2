@@ -185,74 +185,77 @@ export function createPost(listing) {
   const bidsContainer = document.createElement("div");
   bidsContainer.classList.add("mt-8", "ml-1");
 
-  const headerRow = document.createElement("div");
-  headerRow.classList.add(
-    "flex",
-    "font-bold",
-    "border-b",
-    "border-gray-300",
-    "py-2"
-  );
+  if (listing.bids.length > 0) {
+    const headerRow = document.createElement("div");
+    headerRow.classList.add(
+      "flex",
+      "font-bold",
+      "border-b",
+      "border-gray-300",
+      "py-2"
+    );
 
-  const bidderHeader = document.createElement("div");
-  bidderHeader.classList.add("w-1/2");
-  bidderHeader.textContent = "Bidder";
+    const bidderHeader = document.createElement("div");
+    bidderHeader.classList.add("w-1/2");
+    bidderHeader.textContent = "Bidder";
 
-  const timeAgoHeader = document.createElement("div");
-  timeAgoHeader.classList.add("w-1/4");
-  timeAgoHeader.textContent = "Time Ago";
+    const timeAgoHeader = document.createElement("div");
+    timeAgoHeader.classList.add("w-1/4");
+    timeAgoHeader.textContent = "Time Ago";
 
-  const creditsHeader = document.createElement("div");
-  creditsHeader.classList.add("w-1/4");
-  creditsHeader.textContent = "Credits";
+    const creditsHeader = document.createElement("div");
+    creditsHeader.classList.add("w-1/4");
+    creditsHeader.textContent = "Credits";
 
-  headerRow.append(bidderHeader, timeAgoHeader, creditsHeader);
-  bidsContainer.append(headerRow);
+    headerRow.append(bidderHeader, timeAgoHeader, creditsHeader);
+    bidsContainer.append(headerRow);
 
-  const reverseBids = listing.bids.reverse();
+    const reverseBids = listing.bids.reverse();
 
-  reverseBids.forEach((bid, index) => {
-    const row = document.createElement("div");
-    row.classList.add("flex", "py-2", "border-b", "border-gray-300");
+    reverseBids.forEach((bid, index) => {
+      const row = document.createElement("div");
+      row.classList.add("flex", "py-2", "border-b", "border-gray-300");
 
-    const bidderUserDiv = document.createElement("div");
-    bidderUserDiv.classList.add("w-1/2", "flex", "items-center");
+      const bidderUserDiv = document.createElement("div");
+      bidderUserDiv.classList.add("w-1/2", "flex", "items-center");
 
-    const bidderImage = document.createElement("img");
-    bidderImage.src = bid.bidder.avatar.url;
-    bidderImage.alt = bid.bidder.avatar.alt;
-    bidderImage.classList.add("w-8", "h-8", "rounded-full", "mr-2");
+      const bidderImage = document.createElement("img");
+      bidderImage.src = bid.bidder.avatar.url;
+      bidderImage.alt = bid.bidder.avatar.alt;
+      bidderImage.classList.add("w-8", "h-8", "rounded-full", "mr-2");
 
-    const bidderName = document.createElement("span");
-    bidderName.textContent = bid.bidder.name;
+      const bidderName = document.createElement("span");
+      bidderName.textContent = bid.bidder.name;
 
-    bidderUserDiv.append(bidderImage, bidderName);
+      bidderUserDiv.append(bidderImage, bidderName);
 
-    const timeAgoDiv = document.createElement("span");
-    timeAgoDiv.classList.add("w-1/4", "flex", "items-center");
+      const timeAgoDiv = document.createElement("span");
+      timeAgoDiv.classList.add("w-1/4", "flex", "items-center");
 
-    updateTimeAgo(bid.created, timeAgoDiv);
+      updateTimeAgo(bid.created, timeAgoDiv);
 
-    const creditsDiv = document.createElement("div");
-    creditsDiv.classList.add("w-1/4", "flex", "items-center");
+      const creditsDiv = document.createElement("div");
+      creditsDiv.classList.add("w-1/4", "flex", "items-center");
 
-    const creditsSpan = document.createElement("span");
-    creditsSpan.textContent = bid.amount;
+      const creditsSpan = document.createElement("span");
+      creditsSpan.textContent = bid.amount;
 
-    creditsDiv.append(creditsSpan);
-    if (index === 0) {
-      const winnerMedal = document.createElement("i");
-      winnerMedal.textContent = "🥇";
-      winnerMedal.classList.add("text-4xl", "ml-2");
-      creditsDiv.append(winnerMedal);
-      row.classList.add("font-bold");
-    }
+      creditsDiv.append(creditsSpan);
+      if (index === 0) {
+        const winnerMedal = document.createElement("i");
+        winnerMedal.textContent = "🥇";
+        winnerMedal.classList.add("text-4xl", "ml-2");
+        creditsDiv.append(winnerMedal);
+        row.classList.add("font-bold");
+      }
 
-    row.append(bidderUserDiv, timeAgoDiv, creditsDiv);
+      row.append(bidderUserDiv, timeAgoDiv, creditsDiv);
 
-    bidsContainer.append(row);
-  });
+      bidsContainer.append(row);
+    });
 
-  flexContainer.append(bidsContainer);
+    flexContainer.append(bidsContainer);
+  }
+
   container.append(flexContainer);
 }
