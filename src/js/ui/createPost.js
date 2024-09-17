@@ -200,7 +200,7 @@ export function createPost(listing) {
 
   const reverseBids = listing.bids.reverse();
 
-  reverseBids.forEach((bid) => {
+  reverseBids.forEach((bid, index) => {
     const row = document.createElement("div");
     row.classList.add("flex", "py-2", "border-b", "border-gray-300");
 
@@ -222,9 +222,20 @@ export function createPost(listing) {
 
     updateTimeAgo(bid.created, timeAgoDiv);
 
-    const creditsDiv = document.createElement("span");
+    const creditsDiv = document.createElement("div");
     creditsDiv.classList.add("w-1/4", "flex", "items-center");
-    creditsDiv.textContent = bid.amount;
+
+    const creditsSpan = document.createElement("span");
+    creditsSpan.textContent = bid.amount;
+
+    creditsDiv.append(creditsSpan);
+    if (index === 0) {
+      const winnerMedal = document.createElement("i");
+      winnerMedal.textContent = "🥇";
+      winnerMedal.classList.add("text-4xl", "ml-2");
+      creditsDiv.append(winnerMedal);
+      row.classList.add("font-bold");
+    }
 
     row.append(bidderUserDiv, timeAgoDiv, creditsDiv);
 
