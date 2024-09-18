@@ -4,6 +4,7 @@ import { postPage } from "../pages/post.js";
 import { profilePage } from "../pages/profile.js";
 import { registerPage } from "../pages/register.js";
 import { settingsPage } from "../pages/settings.js";
+import { updateNavbar } from "../ui/updateNavbar.js";
 
 export function handleRoute() {
   switch (location.pathname) {
@@ -26,4 +27,6 @@ export function handleRoute() {
       settingsPage();
       break;
   }
+
+  updateNavbar();
 }

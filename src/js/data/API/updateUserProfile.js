@@ -1,4 +1,5 @@
 import { load } from "../../localstorage/load";
+import { logout } from "../../localstorage/logout";
 import { save } from "../../localstorage/save";
 import { renderUserMenu } from "../../ui/renderUserMenu";
 import { API_AUCTION, API_BASE, API_KEY, API_PROFILES } from "./constants";
@@ -24,4 +25,11 @@ export async function updateUserProfile() {
   } catch (error) {
     console.error("Error: ", error);
   }
+
+  const logoutButton = document.getElementById("logout-btn");
+
+  logoutButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    logout();
+  });
 }
