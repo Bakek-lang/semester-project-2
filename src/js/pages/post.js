@@ -6,6 +6,7 @@ import { updateUserProfile } from "../data/API/updateUserProfile.js";
 import { bidInputListener } from "../eventListeners/bidInput.js";
 import { handleBidSubmit } from "../eventListeners/handleBidSubmit.js";
 import { isExpired } from "../helpers/isExpired.js";
+import { isLoggedIn } from "../localstorage/isLoggedIn.js";
 
 export function postPage() {
   const listing = findCorrectListing(listings.data);
@@ -16,5 +17,7 @@ export function postPage() {
     handleBidSubmit(listing);
   }
 
-  updateUserProfile();
+  if (isLoggedIn()) {
+    updateUserProfile();
+  }
 }
