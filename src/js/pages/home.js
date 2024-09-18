@@ -4,12 +4,14 @@ import { updateUserProfile } from "../data/API/updateUserProfile";
 import { modalListeners } from "../eventListeners/modalListeners";
 import { isLoggedIn } from "../localstorage/isLoggedIn";
 import { createCards } from "../ui/createCard.js";
+import { updateNavbar } from "../ui/updateNavbar";
 
 export function homePage() {
   modalListeners();
   createListing();
   const container = document.querySelector("[data-attribute='container'");
   createCards(listings, container);
+  updateNavbar();
 
   if (isLoggedIn()) {
     updateUserProfile();

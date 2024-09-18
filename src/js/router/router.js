@@ -35,6 +35,4 @@ export function handleRoute() {
       settingsPage();
       break;
   }
-
-  updateNavbar();
 }
