@@ -8,6 +8,7 @@ import {
 import { fetchData } from "../data/API/fetch.js";
 import { save } from "../localstorage/save";
 import { load } from "../localstorage/load.js";
+import { sortListingsByExpiration } from "../helpers/sortListings";
 
 export function addSellerLinkClickListener(sellerLink) {
   sellerLink.addEventListener("click", async (event) => {
@@ -33,6 +34,7 @@ export function addSellerLinkClickListener(sellerLink) {
         }
       );
 
+      sellerProfile.data = sortListingsByExpiration(sellerProfile.data);
       save("sellerProfile", sellerProfile);
 
       window.location.href = "/profile/";

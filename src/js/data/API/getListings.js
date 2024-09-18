@@ -1,3 +1,4 @@
+import { sortListingsByExpiration } from "../../helpers/sortListings.js";
 import { API_AUCTION, API_BASE, API_LISTINGS } from "./constants.js";
 import { fetchData } from "./fetch.js";
 
@@ -31,26 +32,27 @@ async function fetchAllListings() {
     allListings = allListings.concat(validNextListings);
   }
 
-  const sortedListings = allListings.sort((a, b) => {
-    const now = new Date();
+  const sortedListings = sortListingsByExpiration(allListings);
+  // const sortedListings = allListings.sort((a, b) => {
+  //   const now = new Date();
 
-    const isAExpired = new Date(a.endsAt) < now;
-    const isBExpired = new Date(b.endsAt) < now;
+  //   const isAExpired = new Date(a.endsAt) < now;
+  //   const isBExpired = new Date(b.endsAt) < now;
 
-    if (!isAExpired && !isBExpired) {
-      return new Date(a.endsAt) - new Date(b.endsAt);
-    }
+  //   if (!isAExpired && !isBExpired) {
+  //     return new Date(a.endsAt) - new Date(b.endsAt);
+  //   }
 
-    if (isAExpired && !isBExpired) {
-      return 1;
-    }
+  //   if (isAExpired && !isBExpired) {
+  //     return 1;
+  //   }
 
-    if (!isAExpired && isBExpired) {
-      return -1;
-    }
+  //   if (!isAExpired && isBExpired) {
+  //     return -1;
+  //   }
 
-    return new Date(b.endsAt) - new Date(a.endsAt);
-  });
+  //   return new Date(b.endsAt) - new Date(a.endsAt);
+  // });
 
   return { data: sortedListings };
 }
