@@ -34,6 +34,11 @@ export function addSellerLinkClickListener(sellerLink) {
         }
       );
 
+      sellerProfile.data = sellerProfile.data.filter((listing) => {
+        return (
+          listing.media && listing.media.length > 0 && listing.media[0].url
+        );
+      });
       sellerProfile.data = sortListingsByExpiration(sellerProfile.data);
       save("sellerProfile", sellerProfile);
 
