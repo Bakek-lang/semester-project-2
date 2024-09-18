@@ -25,11 +25,9 @@ export function createCards(listings, container) {
     img.src = listings.data[i].media[0].url;
     img.alt = listings.data[i].media[0].alt;
 
-    img.onload = () => {
-      container.append(card);
+    img.onerror = () => {
+      img.src = "https://placehold.co/600x400";
     };
-
-    img.onerror = () => {};
 
     card.append(img);
 
@@ -116,6 +114,8 @@ export function createCards(listings, container) {
 
       card.append(buttonContainer);
     }
+
+    container.append(card);
 
     addCardClickListener(card, listings.data[i].id);
 
