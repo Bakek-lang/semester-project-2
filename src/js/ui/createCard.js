@@ -5,18 +5,11 @@ import { isExpired } from "../helpers/isExpired";
 
 export function createCards(listings, container) {
   container.innerHTML = "";
+  console.log(listings.data);
   if (listings.data.length === 0) {
     return;
   }
   for (let i = 0; i < listings.data.length; i++) {
-    if (
-      !listings.data[i].media ||
-      listings.data[i].media.length === 0 ||
-      !listings.data[i].media[0].url
-    ) {
-      continue;
-    }
-
     const card = document.createElement("div");
     card.classList.add(
       "max-w-sm",

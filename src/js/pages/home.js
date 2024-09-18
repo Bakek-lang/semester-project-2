@@ -8,7 +8,6 @@ export function homePage() {
   modalListeners();
   createListing();
   const container = document.querySelector("[data-attribute='container'");
-  console.log(listings);
   createCards(listings, container);
 
   updateUserProfile();

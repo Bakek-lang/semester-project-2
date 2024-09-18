@@ -10,7 +10,12 @@ async function fetchAllListings() {
   const firstResponse = await fetchData(
     `${API_BASE}${API_AUCTION}${API_LISTINGS}?_bids=true&_seller=true&page=${currentPage}&limit=${LIMIT}`
   );
-  allListings = allListings.concat(firstResponse.data);
+
+  const validFirstListings = firstResponse.data.filter((listing) => {
+    return listing.media && listing.media.length > 0 && listing.media[0].url;
+  });
+
+  allListings = allListings.concat(validFirstListings);
   totalPageCount = firstResponse.meta.pageCount;
 
   while (currentPage < totalPageCount) {
@@ -19,7 +24,11 @@ async function fetchAllListings() {
       `${API_BASE}${API_AUCTION}${API_LISTINGS}?_bids=true&_seller=true&page=${currentPage}&limit=${LIMIT}`
     );
 
-    allListings = allListings.concat(nextResponse.data);
+    const validNextListings = nextResponse.data.filter((listing) => {
+      return listing.media && listing.media.length > 0 && listing.media[0].url;
+    });
+
+    allListings = allListings.concat(validNextListings);
   }
 
   const sortedListings = allListings.sort((a, b) => {
