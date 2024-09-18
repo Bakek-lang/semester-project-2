@@ -5,7 +5,9 @@ import { isExpired } from "../helpers/isExpired";
 
 export function createCards(listings, container) {
   container.innerHTML = "";
-
+  if (listings.data.length === 0) {
+    return;
+  }
   for (let i = 0; i < listings.data.length; i++) {
     if (
       !listings.data[i].media ||

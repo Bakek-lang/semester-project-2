@@ -28,8 +28,10 @@ export async function updateUserProfile() {
 
   const logoutButton = document.getElementById("logout-btn");
 
-  logoutButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    logout();
-  });
+  if (logoutButton) {
+    logoutButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      logout();
+    });
+  }
 }
