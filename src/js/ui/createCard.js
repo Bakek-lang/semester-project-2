@@ -1,6 +1,7 @@
 import { addCardClickListener } from "../eventListeners/cardClick";
 import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
 import { calculateTimeLeft } from "../helpers/calculateTimeLeft";
+import { isExpired } from "../helpers/isExpired";
 
 export function createCards(listings, container) {
   container.innerHTML = "";
@@ -108,16 +109,18 @@ export function createCards(listings, container) {
 
     card.append(grid);
 
-    const buttonContainer = document.createElement("div");
-    buttonContainer.classList.add("flex", "p-4");
+    if (!isExpired(endsAt)) {
+      const buttonContainer = document.createElement("div");
+      buttonContainer.classList.add("flex", "p-4");
 
-    const button = document.createElement("button");
-    button.classList.add("bg-orange-600", "py-2", "px-6", "rounded");
-    button.textContent = "Bid Now";
+      const button = document.createElement("button");
+      button.classList.add("bg-orange-600", "py-2", "px-6", "rounded");
+      button.textContent = "Bid Now";
 
-    buttonContainer.append(button);
+      buttonContainer.append(button);
 
-    card.append(buttonContainer);
+      card.append(buttonContainer);
+    }
 
     addCardClickListener(card, listings.data[i].id);
 
