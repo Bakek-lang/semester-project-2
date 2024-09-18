@@ -29,6 +29,10 @@ export function createPost(listing) {
   heroImage.src = listing.media[0].url;
   heroImage.alt = listing.media[0].alt;
 
+  heroImage.onerror = () => {
+    heroImage.src = "https://placehold.co/600x400";
+  };
+
   mediaGallery.append(heroImage);
 
   const thumbnailRow = document.createElement("div");
