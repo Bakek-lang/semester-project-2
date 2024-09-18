@@ -13,15 +13,17 @@ export function createCards(listings, container) {
     const card = document.createElement("div");
     card.classList.add(
       "max-w-sm",
+      "w-96",
       "rounded-xl",
       "bg-white",
       "mt-6",
       "drop-shadow-lg",
-      "cursor-pointer"
+      "cursor-pointer",
+      "h-full"
     );
 
     const img = document.createElement("img");
-    img.classList.add("w-full", "rounded-t-xl");
+    img.classList.add("w-full", "rounded-t-xl", "object-cover", "h-72");
     img.src = listings.data[i].media[0].url;
     img.alt = listings.data[i].media[0].alt;
 
@@ -39,7 +41,7 @@ export function createCards(listings, container) {
     title.textContent = listings.data[i].title;
 
     const description = document.createElement("p");
-    description.classList.add("text-gray-700", "mb-4");
+    description.classList.add("text-gray-700", "mb-4", "text-wrap");
     description.textContent = listings.data[i].description;
 
     contentDiv.append(title, description);
@@ -85,7 +87,7 @@ export function createCards(listings, container) {
     });
 
     const sellerFlexDiv = document.createElement("div");
-    sellerFlexDiv.classList.add("flex", "items-center");
+    sellerFlexDiv.classList.add("flex", "items-center", "text-wrap");
 
     const sellerIconElement = document.createElement("i");
     sellerIconElement.classList.add("text-3xl");
