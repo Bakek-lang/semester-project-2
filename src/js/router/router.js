@@ -1,3 +1,4 @@
+import { isLoggedIn } from "../localstorage/isLoggedIn.js";
 import { homePage } from "../pages/home.js";
 import { loginPage } from "../pages/login.js";
 import { postPage } from "../pages/post.js";
@@ -7,6 +8,13 @@ import { settingsPage } from "../pages/settings.js";
 import { updateNavbar } from "../ui/updateNavbar.js";
 
 export function handleRoute() {
+  const restrictedPaths = ["/post/", "/profile/", "/settings/"];
+
+  if (restrictedPaths.includes(location.pathname) && !isLoggedIn()) {
+    window.location.href = "/login/";
+    return;
+  }
+
   switch (location.pathname) {
     case "/":
       homePage();

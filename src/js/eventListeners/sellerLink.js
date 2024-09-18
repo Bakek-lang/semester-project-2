@@ -9,10 +9,16 @@ import { fetchData } from "../data/API/fetch.js";
 import { save } from "../localstorage/save";
 import { load } from "../localstorage/load.js";
 import { sortListingsByExpiration } from "../helpers/sortListings";
+import { isLoggedIn } from "../localstorage/isLoggedIn";
 
 export function addSellerLinkClickListener(sellerLink) {
   sellerLink.addEventListener("click", async (event) => {
     event.stopPropagation();
+
+    if (!isLoggedIn()) {
+      window.location.href = "/login/";
+      return;
+    }
 
     const sellerName = sellerLink.textContent;
     console.log(sellerName);
