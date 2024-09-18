@@ -1,19 +1,15 @@
 import { addCardClickListener } from "../eventListeners/cardClick";
 import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
 import { calculateTimeLeft } from "../helpers/calculateTimeLeft";
+import { isExpired } from "../helpers/isExpired";
 
 export function createCards(listings, container) {
   container.innerHTML = "";
-
+  console.log(listings.data);
+  if (listings.data.length === 0) {
+    return;
+  }
   for (let i = 0; i < listings.data.length; i++) {
-    if (
-      !listings.data[i].media ||
-      listings.data[i].media.length === 0 ||
-      !listings.data[i].media[0].url
-    ) {
-      continue;
-    }
-
     const card = document.createElement("div");
     card.classList.add(
       "max-w-sm",
@@ -29,11 +25,9 @@ export function createCards(listings, container) {
     img.src = listings.data[i].media[0].url;
     img.alt = listings.data[i].media[0].alt;
 
-    img.onload = () => {
-      container.append(card);
+    img.onerror = () => {
+      img.src = "https://placehold.co/600x400";
     };
-
-    img.onerror = () => {};
 
     card.append(img);
 
@@ -108,16 +102,20 @@ export function createCards(listings, container) {
 
     card.append(grid);
 
-    const buttonContainer = document.createElement("div");
-    buttonContainer.classList.add("flex", "p-4");
+    if (!isExpired(endsAt)) {
+      const buttonContainer = document.createElement("div");
+      buttonContainer.classList.add("flex", "p-4");
 
-    const button = document.createElement("button");
-    button.classList.add("bg-orange-600", "py-2", "px-6", "rounded");
-    button.textContent = "Bid Now";
+      const button = document.createElement("button");
+      button.classList.add("bg-orange-600", "py-2", "px-6", "rounded");
+      button.textContent = "Bid Now";
 
-    buttonContainer.append(button);
+      buttonContainer.append(button);
 
-    card.append(buttonContainer);
+      card.append(buttonContainer);
+    }
+
+    container.append(card);
 
     addCardClickListener(card, listings.data[i].id);
 

@@ -29,6 +29,10 @@ export function createPost(listing) {
   heroImage.src = listing.media[0].url;
   heroImage.alt = listing.media[0].alt;
 
+  heroImage.onerror = () => {
+    heroImage.src = "https://placehold.co/600x400";
+  };
+
   mediaGallery.append(heroImage);
 
   const thumbnailRow = document.createElement("div");
@@ -111,8 +115,7 @@ export function createPost(listing) {
   currentBidValue.classList.add("ml-1");
 
   const numberBids = listing._count.bids;
-  const lastBidAmount =
-    numberBids > 0 ? listing.bids[numberBids - 1].amount : 0;
+  const lastBidAmount = numberBids > 0 ? listing.bids[0].amount : 0;
   currentBidValue.textContent = lastBidAmount;
 
   currentBidValueDiv.append(currentBidIcon, currentBidValue);

@@ -9,7 +9,7 @@ export async function registerUser(name, email, password) {
     body: JSON.stringify({ name, email, password }),
   });
 
-  if (response.ok) {
+  if (!response.ok) {
     return response.json();
   }
 }

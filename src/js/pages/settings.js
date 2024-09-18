@@ -1,5 +1,6 @@
 import { getProfileListings } from "../data/API/getProfileListings";
 import { updateUserProfile } from "../data/API/updateUserProfile";
+import { isLoggedIn } from "../localstorage/isLoggedIn";
 import { load } from "../localstorage/load";
 import { createProfile } from "../ui/createProfile";
 
@@ -11,5 +12,7 @@ export function settingsPage() {
 
   createProfile(profile, profileListings);
 
-  updateUserProfile();
+  if (isLoggedIn()) {
+    updateUserProfile();
+  }
 }
