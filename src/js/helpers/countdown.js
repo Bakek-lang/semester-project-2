@@ -1,6 +1,3 @@
-import { load } from "../localstorage/load";
-import { save } from "../localstorage/save";
-
 export function startCountdown(endsAt, element) {
   const endDate = new Date(endsAt);
 
