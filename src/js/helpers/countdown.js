@@ -1,3 +1,6 @@
+import { load } from "../localstorage/load";
+import { save } from "../localstorage/save";
+
 export function startCountdown(endsAt, element) {
   const endDate = new Date(endsAt);
 
@@ -34,6 +37,14 @@ export function startCountdown(endsAt, element) {
     displayText += ` ${secondsLeft}s`;
 
     element.textContent = displayText.trim();
+
+    if (diff <= 1000) {
+      clearInterval(countdownInterval);
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
   }
 
   updateCountDown();
