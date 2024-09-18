@@ -2,6 +2,7 @@ import { addCardClickListener } from "../eventListeners/cardClick";
 import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
 import { calculateTimeLeft } from "../helpers/calculateTimeLeft";
 import { isExpired } from "../helpers/isExpired";
+import { shortenDescription } from "../helpers/shortenDescription";
 
 export function createCards(listings, container) {
   container.innerHTML = "";
@@ -13,13 +14,13 @@ export function createCards(listings, container) {
     const card = document.createElement("div");
     card.classList.add(
       "max-w-sm",
+      "h-lg",
       "w-96",
       "rounded-xl",
       "bg-white",
       "mt-6",
       "drop-shadow-lg",
-      "cursor-pointer",
-      "h-full"
+      "cursor-pointer"
     );
 
     const img = document.createElement("img");
@@ -42,7 +43,10 @@ export function createCards(listings, container) {
 
     const description = document.createElement("p");
     description.classList.add("text-gray-700", "mb-4", "text-wrap");
-    description.textContent = listings.data[i].description;
+
+    description.textContent = listings.data[i].description
+      ? shortenDescription(listings.data[i].description)
+      : "This listing doesn't have a description";
 
     contentDiv.append(title, description);
 
