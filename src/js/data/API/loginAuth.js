@@ -1,4 +1,4 @@
-import { loginUser } from "./login.js";
+import { loginUser } from "./loginFetch.js";
 
 export async function loginAuth() {
   const form = document.querySelector("form");
