@@ -16,7 +16,6 @@ export function createPost(listing) {
     "flex",
     "flex-col",
     "my-3",
-    "p-4",
     "md:flex-row",
     "xl:p-0"
   );
@@ -32,9 +31,9 @@ export function createPost(listing) {
   heroImage.classList.add(
     "justify-center",
     "object-cover",
-    "rounded-lg",
     "h-96",
-    "w-full",
+    "rounded-lg",
+    "w-screen",
     "md:h-1/2"
   );
   heroImage.src = listing.media[0].url;
@@ -316,7 +315,7 @@ export function createPost(listing) {
       bidderUserDiv.append(bidderImage, bidderName);
 
       const timeAgoDiv = document.createElement("span");
-      timeAgoDiv.classList.add("w-1/4", "flex", "items-center");
+      timeAgoDiv.classList.add("w-1/4", "lg:w-72", "flex", "items-center");
 
       updateTimeAgo(bid.created, timeAgoDiv);
 
