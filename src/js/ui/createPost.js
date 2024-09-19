@@ -83,7 +83,7 @@ export function createPost(listing) {
   const sellerAvatar = document.createElement("img");
   sellerAvatar.src = listing.seller.avatar.url;
   sellerAvatar.alt = listing.seller.avatar.alt;
-  sellerAvatar.classList.add("w-10", "h-10", "rounded-full");
+  sellerAvatar.classList.add("w-10", "h-10", "rounded-full", "object-cover");
 
   const sellerLink = document.createElement("a");
   sellerLink.href = "#";
@@ -307,7 +307,13 @@ export function createPost(listing) {
       const bidderImage = document.createElement("img");
       bidderImage.src = bid.bidder.avatar.url;
       bidderImage.alt = bid.bidder.avatar.alt;
-      bidderImage.classList.add("w-8", "h-8", "rounded-full", "mr-2");
+      bidderImage.classList.add(
+        "w-8",
+        "h-8",
+        "rounded-full",
+        "mr-2",
+        "object-cover"
+      );
 
       const bidderName = document.createElement("span");
       bidderName.textContent = bid.bidder.name;
