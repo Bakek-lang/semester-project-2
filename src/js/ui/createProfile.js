@@ -34,7 +34,7 @@ export function createProfile(profile, listings) {
   );
 
   const img = document.createElement("img");
-  img.classList.add("w-24", "h-24", "rounded-lg", "mx-auto");
+  img.classList.add("w-24", "h-24", "rounded-full", "mx-auto", "object-cover");
   img.src = profile.avatar.url;
   img.alt = profile.avatar.alt;
 
