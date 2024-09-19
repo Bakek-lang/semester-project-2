@@ -5,10 +5,11 @@ import { isExpired } from "../helpers/isExpired";
 import { shortenDescription } from "../helpers/shortenDescription";
 
 export function createCards(listings, container) {
-  container.innerHTML = "";
   if (!listings || listings.data.length === 0) {
     return;
   }
+
+  container.innerHTML = "";
   for (let i = 0; i < listings.data.length; i++) {
     const card = document.createElement("div");
     card.classList.add(

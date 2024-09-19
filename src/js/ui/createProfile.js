@@ -173,6 +173,13 @@ export function createProfile(profile, listings) {
     "gap-4"
   );
 
+  if (listings.data.length === 0) {
+    const defaultMessageListings = document.createElement("span");
+    defaultMessageListings.textContent = "No listings yet.";
+
+    listingsContainer.append(defaultMessageListings);
+  }
+
   containerDiv.append(cardDiv, listingHeadingDiv, listingsContainer);
 
   main.append(containerDiv);
