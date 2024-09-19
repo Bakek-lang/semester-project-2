@@ -1,6 +1,6 @@
 export function shortenDescription(description) {
-  if (description.length > 40) {
-    return description.substring(0, 40) + "...";
+  if (description.length > 35) {
+    return description.substring(0, 35) + "...";
   }
   return description;
 }
