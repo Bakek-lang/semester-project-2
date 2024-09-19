@@ -101,7 +101,8 @@ export function createPost(listing) {
 
   const description = document.createElement("p");
   description.classList.add("text-gray-700", "mt-2");
-  description.textContent = listing.description;
+  description.textContent =
+    listing.description || "This listing doesn't have a description";
 
   sellerDiv.append(title, description);
 
