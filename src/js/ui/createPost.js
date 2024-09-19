@@ -186,7 +186,13 @@ export function createPost(listing) {
       winnerMessage.textContent = "🎉 Congratulations to the WINNER! 🎉";
 
       const winnerInfo = document.createElement("div");
-      winnerInfo.classList.add("flex", "items-center", "mt-4", "mx-auto");
+      winnerInfo.classList.add(
+        "flex",
+        "justify-center",
+        "items-center",
+        "mt-4",
+        "mx-auto"
+      );
 
       const winnerImage = document.createElement("img");
       winnerImage.src = listing.bids[0].bidder.avatar.url;
