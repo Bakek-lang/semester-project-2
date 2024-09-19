@@ -6,7 +6,6 @@ import { shortenDescription } from "../helpers/shortenDescription";
 
 export function createCards(listings, container) {
   container.innerHTML = "";
-  console.log(listings.data);
   if (listings.data.length === 0) {
     return;
   }
