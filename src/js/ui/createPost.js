@@ -12,10 +12,20 @@ export function createPost(listing) {
   const reverseBids = listing.bids.reverse();
 
   const flexContainer = document.createElement("div");
-  flexContainer.classList.add("flex", "flex-col", "mt-3", "p-4");
+  flexContainer.classList.add(
+    "flex",
+    "flex-col",
+    "my-3",
+    "p-4",
+    "md:flex-row",
+    "xl:p-0"
+  );
+
+  const contentContainer = document.createElement("div");
+  contentContainer.classList.add("w-full", "md:w-2/3", "flex", "flex-col");
 
   const mediaGallery = document.createElement("div");
-  mediaGallery.classList.add("media-gallery");
+  mediaGallery.classList.add("media-gallery", "md:mr-6", "md:w-1/3");
 
   const heroImage = document.createElement("img");
   heroImage.id = "hero-image";
@@ -23,8 +33,9 @@ export function createPost(listing) {
     "justify-center",
     "object-cover",
     "rounded-lg",
-    "h-64",
-    "w-full"
+    "h-96",
+    "w-full",
+    "md:h-1/2"
   );
   heroImage.src = listing.media[0].url;
   heroImage.alt = listing.media[0].alt;
@@ -225,7 +236,7 @@ export function createPost(listing) {
     bidInput.type = "text";
     bidInput.classList.add(
       "border",
-      "w-1/3",
+      "w-1/4",
       "rounded",
       "py-2",
       "text-right",
@@ -252,8 +263,9 @@ export function createPost(listing) {
     sellerDiv.append(bidSection);
   }
 
-  flexContainer.append(sellerDiv);
-  const sellerLinkTag = flexContainer.querySelector(
+  contentContainer.append(sellerDiv);
+  // flexContainer.append(sellerDiv);
+  const sellerLinkTag = contentContainer.querySelector(
     "[data-attribute='seller-link']"
   );
   addSellerLinkClickListener(sellerLinkTag);
@@ -328,8 +340,10 @@ export function createPost(listing) {
       bidsContainer.append(row);
     });
 
-    flexContainer.append(bidsContainer);
+    contentContainer.append(bidsContainer);
+    // flexContainer.append(bidsContainer);
   }
 
+  flexContainer.append(contentContainer);
   container.append(flexContainer);
 }
