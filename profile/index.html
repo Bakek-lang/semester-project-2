@@ -16,7 +16,7 @@
     <header class="bg-slate-500 relative">
       <nav class="bg-white border-gray-500 border-b">
         <div
-          class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+          class="relative max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
         >
           <a href="/">
             <img src="/logo/Logo-mobile-1.svg" alt="Logo for Auction House" />
@@ -39,7 +39,7 @@
             >
               <div class="px-4 py-3">
                 <img
-                  class="w-16 h-16 rounded-full mx-auto mb-2 border"
+                  class="w-16 h-16 rounded-full mx-auto mb-2 border object-cover"
                   src="/logo/Logo-mobile-1.svg"
                   alt=""
                   data-profile="user-image"
@@ -47,28 +47,24 @@
                 <span
                   data-profile="user-name"
                   class="block text-sm text-gray-800"
-                  >John Doe</span
-                >
+                ></span>
                 <span
                   data-profile="user-email"
                   class="block text-sm text-gray-400"
-                  >Johndoe123@gmail.com</span
-                >
+                ></span>
                 <div class="flex items-center">
                   <span class="block text-md text-gray-700 mt-2">Credits:</span>
                   <span
                     data-profile="user-credits"
                     class="block text-md text-gray-700 mt-2 ml-2"
-                    >1000</span
-                  >
+                  ></span>
                 </div>
                 <div class="flex items-center">
                   <span class="block text-md text-gray-700 mt-2">Wins:</span>
                   <span
                     data-profile="user-wins"
                     class="block text-md text-gray-700 mt-2 ml-2"
-                    >15</span
-                  >
+                  ></span>
                 </div>
               </div>
               <ul class="py-2">
@@ -84,11 +80,7 @@
                     >View listings</a
                   >
                 </li>
-                <li>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700"
-                    >Make a listing</a
-                  >
-                </li>
+
                 <li>
                   <a
                     id="logout-btn"
@@ -103,19 +95,11 @@
         </div>
       </nav>
     </header>
-    <main class="flex-grow items-center"></main>
+    <main class="flex-grow"></main>
     <footer
-      class="bg-white border-t border-gray-500 flex justify-between items-center p-2"
+      class="bg-white border-t border-gray-500 flex justify-center items-center p-2"
     >
-      <a href="#">
-        <img
-          class="h-8"
-          src="../logo/Logo-mobile-1.svg"
-          alt="Logo for Auction House"
-        />
-      </a>
       <p>&#169;Auction House</p>
-      <a class="underline" href="#">My account</a>
     </footer>
   </body>
 </html>

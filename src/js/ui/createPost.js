@@ -12,19 +12,29 @@ export function createPost(listing) {
   const reverseBids = listing.bids.reverse();
 
   const flexContainer = document.createElement("div");
-  flexContainer.classList.add("flex", "flex-col", "mt-3", "p-4");
+  flexContainer.classList.add(
+    "flex",
+    "flex-col",
+    "my-3",
+    "md:flex-row",
+    "xl:p-0"
+  );
+
+  const contentContainer = document.createElement("div");
+  contentContainer.classList.add("w-full", "md:w-2/3", "flex", "flex-col");
 
   const mediaGallery = document.createElement("div");
-  mediaGallery.classList.add("media-gallery");
+  mediaGallery.classList.add("media-gallery", "md:mr-6", "md:w-1/3");
 
   const heroImage = document.createElement("img");
   heroImage.id = "hero-image";
   heroImage.classList.add(
     "justify-center",
     "object-cover",
+    "h-96",
     "rounded-lg",
-    "h-64",
-    "w-full"
+    "w-screen",
+    "md:h-1/2"
   );
   heroImage.src = listing.media[0].url;
   heroImage.alt = listing.media[0].alt;
@@ -53,7 +63,8 @@ export function createPost(listing) {
         "cursor-pointer",
         "border-4",
         "border",
-        "border-transparent"
+        "border-transparent",
+        "h-16"
       );
 
       thumbnailRow.append(img);
@@ -73,7 +84,7 @@ export function createPost(listing) {
   const sellerAvatar = document.createElement("img");
   sellerAvatar.src = listing.seller.avatar.url;
   sellerAvatar.alt = listing.seller.avatar.alt;
-  sellerAvatar.classList.add("w-10", "h-10", "rounded-full");
+  sellerAvatar.classList.add("w-10", "h-10", "rounded-full", "object-cover");
 
   const sellerLink = document.createElement("a");
   sellerLink.href = "#";
@@ -175,7 +186,13 @@ export function createPost(listing) {
       winnerMessage.textContent = "🎉 Congratulations to the WINNER! 🎉";
 
       const winnerInfo = document.createElement("div");
-      winnerInfo.classList.add("flex", "items-center", "mt-4", "mx-auto");
+      winnerInfo.classList.add(
+        "flex",
+        "justify-center",
+        "items-center",
+        "mt-4",
+        "mx-auto"
+      );
 
       const winnerImage = document.createElement("img");
       winnerImage.src = listing.bids[0].bidder.avatar.url;
@@ -225,7 +242,7 @@ export function createPost(listing) {
     bidInput.type = "text";
     bidInput.classList.add(
       "border",
-      "w-1/3",
+      "w-1/4",
       "rounded",
       "py-2",
       "text-right",
@@ -252,8 +269,9 @@ export function createPost(listing) {
     sellerDiv.append(bidSection);
   }
 
-  flexContainer.append(sellerDiv);
-  const sellerLinkTag = flexContainer.querySelector(
+  contentContainer.append(sellerDiv);
+  // flexContainer.append(sellerDiv);
+  const sellerLinkTag = contentContainer.querySelector(
     "[data-attribute='seller-link']"
   );
   addSellerLinkClickListener(sellerLinkTag);
@@ -296,7 +314,13 @@ export function createPost(listing) {
       const bidderImage = document.createElement("img");
       bidderImage.src = bid.bidder.avatar.url;
       bidderImage.alt = bid.bidder.avatar.alt;
-      bidderImage.classList.add("w-8", "h-8", "rounded-full", "mr-2");
+      bidderImage.classList.add(
+        "w-8",
+        "h-8",
+        "rounded-full",
+        "mr-2",
+        "object-cover"
+      );
 
       const bidderName = document.createElement("span");
       bidderName.textContent = bid.bidder.name;
@@ -304,7 +328,7 @@ export function createPost(listing) {
       bidderUserDiv.append(bidderImage, bidderName);
 
       const timeAgoDiv = document.createElement("span");
-      timeAgoDiv.classList.add("w-1/4", "flex", "items-center");
+      timeAgoDiv.classList.add("w-1/4", "lg:w-72", "flex", "items-center");
 
       updateTimeAgo(bid.created, timeAgoDiv);
 
@@ -328,8 +352,10 @@ export function createPost(listing) {
       bidsContainer.append(row);
     });
 
-    flexContainer.append(bidsContainer);
+    contentContainer.append(bidsContainer);
+    // flexContainer.append(bidsContainer);
   }
 
+  flexContainer.append(contentContainer);
   container.append(flexContainer);
 }

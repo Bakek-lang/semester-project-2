@@ -2,17 +2,20 @@ import { addCardClickListener } from "../eventListeners/cardClick";
 import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
 import { calculateTimeLeft } from "../helpers/calculateTimeLeft";
 import { isExpired } from "../helpers/isExpired";
+import { shortenDescription } from "../helpers/shortenDescription";
 
 export function createCards(listings, container) {
-  container.innerHTML = "";
-  console.log(listings.data);
-  if (listings.data.length === 0) {
+  if (!listings || listings.data.length === 0) {
     return;
   }
+
+  container.innerHTML = "";
   for (let i = 0; i < listings.data.length; i++) {
     const card = document.createElement("div");
     card.classList.add(
       "max-w-sm",
+      "h-lg",
+      "w-96",
       "rounded-xl",
       "bg-white",
       "mt-6",
@@ -21,7 +24,7 @@ export function createCards(listings, container) {
     );
 
     const img = document.createElement("img");
-    img.classList.add("w-full", "rounded-t-xl");
+    img.classList.add("w-full", "rounded-t-xl", "object-cover", "h-72");
     img.src = listings.data[i].media[0].url;
     img.alt = listings.data[i].media[0].alt;
 
@@ -39,8 +42,11 @@ export function createCards(listings, container) {
     title.textContent = listings.data[i].title;
 
     const description = document.createElement("p");
-    description.classList.add("text-gray-700", "mb-4");
-    description.textContent = listings.data[i].description;
+    description.classList.add("text-gray-700", "mb-4", "text-wrap");
+
+    description.textContent = listings.data[i].description
+      ? shortenDescription(listings.data[i].description)
+      : "This listing doesn't have a description";
 
     contentDiv.append(title, description);
 
@@ -85,7 +91,7 @@ export function createCards(listings, container) {
     });
 
     const sellerFlexDiv = document.createElement("div");
-    sellerFlexDiv.classList.add("flex", "items-center");
+    sellerFlexDiv.classList.add("flex", "items-center", "text-wrap");
 
     const sellerIconElement = document.createElement("i");
     sellerIconElement.classList.add("text-3xl");

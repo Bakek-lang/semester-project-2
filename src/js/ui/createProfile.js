@@ -15,9 +15,11 @@ export function createProfile(profile, listings) {
     "flex",
     "flex-col",
     "items-center",
+    "justify-center",
     "min-h-screen",
     "p-4",
-    "bg-gray-700"
+    "max-w-screen-xl",
+    "mx-auto"
   );
 
   const cardDiv = document.createElement("div");
@@ -32,7 +34,7 @@ export function createProfile(profile, listings) {
   );
 
   const img = document.createElement("img");
-  img.classList.add("w-24", "h-24", "rounded-lg", "mx-auto");
+  img.classList.add("w-24", "h-24", "rounded-full", "mx-auto", "object-cover");
   img.src = profile.avatar.url;
   img.alt = profile.avatar.alt;
 
@@ -42,7 +44,7 @@ export function createProfile(profile, listings) {
 
   const bio = document.createElement("p");
   bio.classList.add("mt-4");
-  bio.textContent = profile.bio || "";
+  bio.textContent = profile.bio || "This user has not made a bio yet.";
 
   if (profile.name === profileStorageName) {
     const form = document.createElement("form");
@@ -147,13 +149,36 @@ export function createProfile(profile, listings) {
   listingHeadingDiv.classList.add("mt-4", "w-full");
 
   const listingsHeading = document.createElement("h2");
-  listingsHeading.classList.add("text-3xl", "font-bold", "mb-6", "text-left");
-  listingsHeading.textContent = "Listings";
+  listingsHeading.classList.add(
+    "text-3xl",
+    "font-bold",
+    "mb-2",
+    "mt-2",
+    "text-left"
+  );
+  listingsHeading.textContent = "Listings:";
 
   listingHeadingDiv.append(listingsHeading);
 
   const listingsContainer = document.createElement("div");
-  listingsContainer.classList.add("mt-4", "w-full", "flex", "flex-wrap");
+  listingsContainer.classList.add(
+    "mt-4",
+    "w-full",
+    "flex",
+    "flex-wrap",
+    "justify-center",
+    "xl:justify-between",
+    "max-w-screen-xl",
+    "mx-auto",
+    "gap-4"
+  );
+
+  if (listings.data.length === 0) {
+    const defaultMessageListings = document.createElement("span");
+    defaultMessageListings.textContent = "No listings yet.";
+
+    listingsContainer.append(defaultMessageListings);
+  }
 
   containerDiv.append(cardDiv, listingHeadingDiv, listingsContainer);
 
