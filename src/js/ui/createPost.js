@@ -203,7 +203,8 @@ export function createPost(listing) {
         "w-16",
         "h-16",
         "rounded-full",
-        "mr-8"
+        "mr-8",
+        "object-cover"
       );
 
       const winnerName = document.createElement("span");
