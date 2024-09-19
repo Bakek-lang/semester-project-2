@@ -63,7 +63,8 @@ export function createPost(listing) {
         "cursor-pointer",
         "border-4",
         "border",
-        "border-transparent"
+        "border-transparent",
+        "h-16"
       );
 
       thumbnailRow.append(img);
