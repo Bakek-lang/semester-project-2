@@ -1,4 +1,6 @@
 import { updateSettings } from "../data/API/updateSettings";
+import { clearErrors } from "../errorhandling/errorMessages/clearErrors";
+import { showError } from "../errorhandling/errorMessages/showError";
 import { load } from "../localstorage/load";
 import { createCards } from "./createCard";
 
@@ -56,19 +58,38 @@ export function createProfile(profile, listings) {
       const imageAlt = imageAltInput.value;
       const bioText = bioInput.value;
 
-      updateSettings(imageUrl, imageAlt, bioText);
+      let isValid = true;
+
+      clearErrors();
+
+      if (!imageUrl) {
+        showError(imageInput, "Please enter a valid image URL");
+        isValid = false;
+      }
+
+      if (!imageAlt) {
+        showError(
+          imageAltInput,
+          "Please enter a short description for the image"
+        );
+        isValid = false;
+      }
+
+      if (!bioText) {
+        showError(bioInput, "Bio cannot be empty.");
+        isValid = false;
+      }
+
+      if (isValid) {
+        updateSettings(imageUrl, imageAlt, bioText);
+      }
       // update img and bio
       console.log("Image URL:", imageUrl);
       console.log("Bio:", bioText);
     };
 
     const imageUploadContainer = document.createElement("div");
-    imageUploadContainer.classList.add(
-      "flex",
-      "items-center",
-      "justify-between",
-      "mt-2"
-    );
+    imageUploadContainer.classList.add("flex", "flex-col", "mt-2");
 
     const imageInput = document.createElement("input");
     imageInput.type = "text";
@@ -85,12 +106,7 @@ export function createProfile(profile, listings) {
     imageUploadContainer.append(imageInput);
 
     const imageAltContainer = document.createElement("div");
-    imageAltContainer.classList.add(
-      "flex",
-      "items-center",
-      "justify-between",
-      "mt-2"
-    );
+    imageAltContainer.classList.add("flex", "flex-col", "mt-2");
 
     const imageAltInput = document.createElement("input");
     imageAltInput.type = "text";
