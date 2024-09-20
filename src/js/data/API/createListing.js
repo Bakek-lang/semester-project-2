@@ -1,11 +1,17 @@
 import { clearErrors } from "../../errorhandling/errorMessages/clearErrors";
 import { showError } from "../../errorhandling/errorMessages/showError";
+import { addImagesButton } from "../../eventListeners/addImagesButton";
 import { calculateEndDate } from "../../helpers/calculateEndDate";
 import { load } from "../../localstorage/load";
 import { API_AUCTION, API_BASE, API_KEY, API_LISTINGS } from "./constants";
 
 export function createListing() {
   const createListingForm = document.getElementById("create-listing-form");
+
+  const imageInputContainer = document.getElementById("image-input-container");
+  const addImageButton = document.getElementById("add-image-button");
+
+  addImagesButton(imageInputContainer, addImageButton);
 
   if (createListingForm) {
     createListingForm.addEventListener("submit", async (event) => {
@@ -62,16 +68,42 @@ export function createListing() {
       const endsAtValue = calculateEndDate(durationValue, unitValue);
       console.log("Ends at: ", endsAtValue);
 
+      const mediaArray = [];
+
+      if (mediaUrlValue && mediaAltValue) {
+        mediaArray.push({
+          url: mediaUrlValue,
+          alt: mediaAltValue,
+        });
+      }
+
+      const dynamicImageUrls = document.querySelectorAll(".mediaUrl");
+      const dynamicImageAlts = document.querySelectorAll(".mediaAlt");
+
+      dynamicImageUrls.forEach((urlInput, index) => {
+        const urlValue = urlInput.value;
+        const altValue = dynamicImageAlts[index].value;
+
+        if (urlValue && altValue) {
+          mediaArray.push({
+            url: urlValue,
+            alt: altValue,
+          });
+        } else {
+          showError(urlInput, "Please enter a valid image URL and description");
+          isValid = false;
+        }
+      });
+
+      if (!isValid) {
+        return;
+      }
+
       const apiEndpoint = API_BASE + API_AUCTION + API_LISTINGS;
       const data = {
         title: titleValue,
         description: descriptionValue,
-        media: [
-          {
-            url: mediaUrlValue,
-            alt: mediaAltValue,
-          },
-        ],
+        media: mediaArray,
         endsAt: endsAtValue,
       };
 

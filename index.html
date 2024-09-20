@@ -124,7 +124,7 @@
         class="absolute inset-0 bg-gray-800 bg-opacity-75 z-20 justify-center hidden"
       >
         <div
-          class="relative flex flex-col mt-28 rounded-lg z-30 bg-white border border-blue-800 p-8 max-w-lg"
+          class="relative flex flex-col mt-28 rounded-lg z-30 bg-white border border-blue-800 p-8 max-w-lg overflow-y-auto"
         >
           <button
             id="close-modal"
@@ -173,6 +173,14 @@
                 id="mediaAlt"
               />
             </div>
+            <div id="image-input-container" class="mb-4 w-full"></div>
+            <button
+              type="button"
+              id="add-image-button"
+              class="bg-blue-600 text-white py-2 px-4 rounded mb-2"
+            >
+              Add another image
+            </button>
             <div class="mx-auto bg-blue flex justify-between gap-x-4">
               <div class="mb-4 w-full">
                 <label for="duration" class="text-sm font-medium text-gray-700"
