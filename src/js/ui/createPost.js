@@ -32,7 +32,7 @@ export function createPost(listing) {
     const button = document.createElement("button");
     button.setAttribute("id", "delete-button");
     button.classList.add(
-      "bg-red-600",
+      "bg-red-500",
       "top-0",
       "right-0",
       "absolute",

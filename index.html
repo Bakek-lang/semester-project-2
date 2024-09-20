@@ -12,7 +12,7 @@
     ></script>
     <title>Auction House</title>
   </head>
-  <body class="flex flex-col min-h-screen overflow-hidden">
+  <body class="flex flex-col min-h-screen">
     <header class="bg-slate-500 relative">
       <nav class="bg-white border-gray-500 border-b">
         <div
@@ -145,7 +145,7 @@
             </div>
             <div class="mb-4 w-full">
               <label for="description" class="text-sm font-medium text-gray-700"
-                >Description</label
+                >Description <span class="text-red-500">*</span></label
               >
               <input
                 type="text"
@@ -198,12 +198,14 @@
                 </select>
               </div>
             </div>
-            <button
-              type="submit"
-              class="bg-blue-600 text-white px-4 py-2 rounded mt-2"
-            >
-              Create Listing
-            </button>
+            <div id="listing-error">
+              <button
+                type="submit"
+                class="bg-blue-600 text-white px-4 py-2 rounded mt-2"
+              >
+                Create Listing
+              </button>
+            </div>
           </form>
         </div>
       </div>
