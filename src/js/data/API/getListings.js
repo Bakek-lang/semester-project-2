@@ -2,7 +2,7 @@ import { sortListingsByExpiration } from "../../helpers/sortListings.js";
 import { API_AUCTION, API_BASE, API_LISTINGS } from "./constants.js";
 import { fetchData } from "./fetch.js";
 
-async function fetchAllListings() {
+export async function fetchAllListings() {
   let allListings = [];
   let currentPage = 1;
   let totalPageCount = 1;
@@ -36,5 +36,3 @@ async function fetchAllListings() {
 
   return { data: sortedListings };
 }
-
-export const listings = await fetchAllListings();
