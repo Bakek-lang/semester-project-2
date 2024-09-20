@@ -5,7 +5,7 @@ import { isExpired } from "../helpers/isExpired";
 import { shortenDescription } from "../helpers/shortenDescription";
 
 export function createCards(listings, container) {
-  if (!listings || listings.data.length === 0) {
+  if (listings.data.length === 0) {
     return;
   }
 
@@ -62,11 +62,12 @@ export function createCards(listings, container) {
       "p-4"
     );
 
-    const numberBids = listings.data[i]._count.bids;
+    const numberBids = listings.data[i]._count?.bids || 0;
     const lastBidAmount =
       numberBids > 0 ? listings.data[i].bids[numberBids - 1].amount : 0;
-    const endsAt = listings.data[i].endsAt;
+    const endsAt = listings.data[i].endsAt || "No end date available";
 
+    console.log("this doesnt work");
     const gridItems = [
       { icon: "💵", text: lastBidAmount },
       { icon: "⏳", text: calculateTimeLeft(endsAt) },

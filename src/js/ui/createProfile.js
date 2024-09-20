@@ -189,7 +189,7 @@ export function createProfile(profile, listings) {
     "gap-4"
   );
 
-  if (listings.data.length === 0) {
+  if (!listings || listings.data.length === 0) {
     const defaultMessageListings = document.createElement("span");
     defaultMessageListings.textContent = "No listings yet.";
 
