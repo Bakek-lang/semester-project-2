@@ -1,11 +1,18 @@
 import { clearErrors } from "../../errorhandling/errorMessages/clearErrors";
 import { showError } from "../../errorhandling/errorMessages/showError";
+import { addImagesButton } from "../../eventListeners/addImagesButton";
 import { calculateEndDate } from "../../helpers/calculateEndDate";
 import { load } from "../../localstorage/load";
+import { addImageInputField } from "../../modal/imageInputs/addImageInput";
 import { API_AUCTION, API_BASE, API_KEY, API_LISTINGS } from "./constants";
 
 export function createListing() {
   const createListingForm = document.getElementById("create-listing-form");
+
+  const imageInputContainer = document.getElementById("image-input-container");
+  const addImageButton = document.getElementById("add-image-button");
+
+  addImagesButton(imageInputContainer, addImageButton);
 
   if (createListingForm) {
     createListingForm.addEventListener("submit", async (event) => {
