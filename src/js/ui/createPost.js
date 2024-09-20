@@ -1,7 +1,9 @@
+import { deleteListing } from "../data/deleteListing";
 import { addSellerLinkClickListener } from "../eventListeners/sellerLink";
 import { updateTimeAgo } from "../helpers/calculateBidTime";
 import { startCountdown } from "../helpers/countdown";
 import { isExpired } from "../helpers/isExpired";
+import { load } from "../localstorage/load";
 export function createPost(listing) {
   console.log("this is listing on post specific", listing);
   const container = document.querySelector("main");
@@ -17,8 +19,35 @@ export function createPost(listing) {
     "flex-col",
     "my-3",
     "md:flex-row",
-    "xl:p-0"
+    "xl:p-0",
+    "relative"
   );
+
+  const profile = load("profile");
+  const profileName = profile.name;
+
+  const listingSellerName = listing.seller.name;
+
+  if (profileName === listingSellerName) {
+    const button = document.createElement("button");
+    button.setAttribute("id", "delete-button");
+    button.classList.add(
+      "bg-red-600",
+      "top-0",
+      "right-0",
+      "absolute",
+      "px-4",
+      "py-2",
+      "rounded-lg"
+    );
+    button.textContent = "DELETE";
+
+    flexContainer.append(button);
+
+    button.addEventListener("click", () => {
+      deleteListing(listing.id);
+    });
+  }
 
   const contentContainer = document.createElement("div");
   contentContainer.classList.add("w-full", "md:w-2/3", "flex", "flex-col");
