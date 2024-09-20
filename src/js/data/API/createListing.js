@@ -1,3 +1,5 @@
+import { clearErrors } from "../../errorhandling/errorMessages/clearErrors";
+import { showError } from "../../errorhandling/errorMessages/showError";
 import { calculateEndDate } from "../../helpers/calculateEndDate";
 import { load } from "../../localstorage/load";
 import { API_AUCTION, API_BASE, API_KEY, API_LISTINGS } from "./constants";
@@ -15,6 +17,47 @@ export function createListing() {
       const mediaAltValue = document.getElementById("mediaAlt").value;
       const durationValue = document.getElementById("duration").value;
       const unitValue = document.getElementById("unit").value;
+
+      let isValid = true;
+
+      clearErrors();
+
+      if (!titleValue) {
+        showError(document.getElementById("title"), "Title cannot be empty.");
+        isValid = false;
+      }
+      if (!descriptionValue) {
+        showError(
+          document.getElementById("description"),
+          "Description cannot be empty."
+        );
+        isValid = false;
+      }
+      if (!mediaUrlValue) {
+        showError(
+          document.getElementById("mediaUrl"),
+          "Image URL cannot be empty."
+        );
+        isValid = false;
+      }
+      if (!mediaAltValue) {
+        showError(
+          document.getElementById("mediaAlt"),
+          "Image Description cannot be empty."
+        );
+        isValid = false;
+      }
+      if (!durationValue) {
+        showError(
+          document.getElementById("duration"),
+          "Auction Time cannot be empty."
+        );
+        isValid = false;
+      }
+
+      if (!isValid) {
+        return;
+      }
 
       const endsAtValue = calculateEndDate(durationValue, unitValue);
       console.log("Ends at: ", endsAtValue);
@@ -47,11 +90,21 @@ export function createListing() {
 
         if (!response.ok) {
           console.error("Failed to create listing: ", error);
+          showError(
+            document.getElementById("listing-error"),
+            "An error occured while creating the post"
+          );
         }
 
         console.log(response);
+
+        window.location.href = "/";
       } catch (error) {
         console.error("Could not create listing, error: ", error);
+        showError(
+          document.getElementById("listing-error"),
+          "An error occured while creating the post"
+        );
       }
     });
   }

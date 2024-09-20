@@ -65,6 +65,8 @@ export function handleBidSubmit(listing) {
       window.location.reload();
     } catch (error) {
       console.error("Could not make bid on listing: ", error);
+      errorDiv.classList.remove("hidden");
+      errorDiv.textContent = "You can not bid on your own item";
     }
   });
 }

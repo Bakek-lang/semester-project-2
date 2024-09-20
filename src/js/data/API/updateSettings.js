@@ -1,3 +1,4 @@
+import { showError } from "../../errorhandling/errorMessages/showError";
 import { load } from "../../localstorage/load";
 import { save } from "../../localstorage/save";
 import { API_AUCTION, API_BASE, API_KEY, API_PROFILES } from "./constants";
@@ -28,6 +29,17 @@ export async function updateSettings(imageUrl, altText, bioText) {
 
     if (!response.ok) {
       console.error("Failed to update profile: ", error);
+
+      const bioInput = document.querySelector("textarea");
+
+      const errorData = await response.json();
+      if (errorData && errorData.message) {
+        showError(bioInput, errorData.message);
+      } else {
+        showError(bioInput, "An error occured while updating your profile.");
+      }
+
+      return;
     }
 
     const updatedProfile = await response.json();
@@ -37,5 +49,7 @@ export async function updateSettings(imageUrl, altText, bioText) {
     window.location.reload();
   } catch (error) {
     console.log("Error updating settings: ", error);
+    const bioInput = document.querySelector("textarea");
+    showError(bioInput, "An error occured while updating your profile");
   }
 }

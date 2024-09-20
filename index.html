@@ -145,7 +145,7 @@
             </div>
             <div class="mb-4 w-full">
               <label for="description" class="text-sm font-medium text-gray-700"
-                >Description</label
+                >Description <span class="text-red-500">*</span></label
               >
               <input
                 type="text"
@@ -198,12 +198,14 @@
                 </select>
               </div>
             </div>
-            <button
-              type="submit"
-              class="bg-blue-600 text-white px-4 py-2 rounded mt-2"
-            >
-              Create Listing
-            </button>
+            <div id="listing-error">
+              <button
+                type="submit"
+                class="bg-blue-600 text-white px-4 py-2 rounded mt-2"
+              >
+                Create Listing
+              </button>
+            </div>
           </form>
         </div>
       </div>

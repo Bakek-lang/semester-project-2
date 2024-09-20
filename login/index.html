@@ -28,15 +28,15 @@
       </nav>
     </header>
     <main class="flex-grow">
-      <div class="flex items-center justify-center mt-3">
+      <div class="flex items-center justify-center mt-3 w-full">
         <div
-          class="flex flex-col justify-center items-center border border-gray-700 p-6"
+          class="flex flex-col max-w-md w-full justify-center items-center border border-gray-700 p-6"
         >
           <div class="text-center mb-4">
             <img src="../logo/Logo-mobile-1.svg" alt="" />
             <h1 class="text-xl font-bold mt-4">Login</h1>
           </div>
-          <form method="POST">
+          <form method="POST" class="w-full">
             <div class="flex flex-col mb-4">
               <label for="email">Email:</label>
               <div class="mt-2">
@@ -48,6 +48,7 @@
                   required
                 />
               </div>
+              <p id="email-error" class="text-red-700"></p>
             </div>
             <div class="flex flex-col mb-4">
               <label for="password">Password:</label>
@@ -60,6 +61,7 @@
                   required
                 />
               </div>
+              <p id="password-error" class="text-red-700"></p>
             </div>
             <div>
               <button
@@ -68,6 +70,7 @@
               >
                 Login
               </button>
+              <p id="wrong-information" class="text-red-700"></p>
             </div>
             <div class="flex mt-2">
               <p>Create an account?</p>
@@ -78,17 +81,9 @@
       </div>
     </main>
     <footer
-      class="bg-white border-t border-gray-500 flex justify-between items-center p-2"
+      class="bg-white border-t border-gray-500 flex justify-center items-center p-2"
     >
-      <a href="#">
-        <img
-          class="h-8"
-          src="../logo/Logo-mobile-1.svg"
-          alt="Logo for Auction House"
-        />
-      </a>
       <p>&#169;Auction House</p>
-      <a class="underline" href="#">My account</a>
     </footer>
   </body>
 </html>
