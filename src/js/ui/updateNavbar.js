@@ -6,7 +6,7 @@ export function updateNavbar() {
   if (!isLoggedIn()) {
     navbarDiv.innerHTML = "";
     navbarDiv.innerHTML = `
-    <a href="/login/" class="nav-link">Log In</a>
-    <a href="/register/" class="nav-link">Register</a>`;
+    <a href="/login/" class="nav-link mr-8 text-2xl">Log In</a>
+    <a href="/register/" class="nav-link text-2xl">Register</a>`;
   }
 }
