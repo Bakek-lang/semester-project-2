@@ -67,7 +67,6 @@ export function createCards(listings, container) {
       numberBids > 0 ? listings.data[i].bids[numberBids - 1].amount : 0;
     const endsAt = listings.data[i].endsAt || "No end date available";
 
-    console.log("this doesnt work");
     const gridItems = [
       { icon: "💵", text: lastBidAmount },
       { icon: "⏳", text: calculateTimeLeft(endsAt) },
