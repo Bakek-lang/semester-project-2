@@ -7,6 +7,7 @@ export function modalListeners() {
   createListingButton.addEventListener("click", () => {
     if (!isLoggedIn()) {
       window.location.href = "/login/";
+      return;
     }
     openModal();
   });
