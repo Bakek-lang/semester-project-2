@@ -4,8 +4,8 @@ import { isLoggedIn } from "../localstorage/isLoggedIn";
 import { load } from "../localstorage/load";
 import { createProfile } from "../ui/createProfile";
 
-export function settingsPage() {
-  getProfileListings();
+export async function settingsPage() {
+  await getProfileListings();
 
   const profileListings = load("profileListings");
   const profile = load("personalProfile");
