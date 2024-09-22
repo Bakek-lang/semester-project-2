@@ -4,6 +4,30 @@ import { showError } from "../errorhandling/errorMessages/showError";
 import { load } from "../localstorage/load";
 import { createCards } from "./createCard";
 
+/**
+ * Dynamically creates and displays a user profile with their listings.
+ *
+ * This function generates the layout for a user's profile, including their avatar, name, and bio. If the profile belongs to the currently logged-in user, an update form for the avatar and bio is included. It also displays the user's auction listings.
+ *
+ * @function createProfile
+ *
+ * @param {object} profile - The user profile object containing the avatar, name, and bio.
+ * @param {object} listings - An object containing the user's auction listings.
+ *
+ * @returns {void} This function does not return a value, but it modifies the DOM by rendering the profile details and listings.
+ *
+ * @description
+ * - Clears the `main` container and populates it with the user's profile information.
+ * - Displays the profile avatar, name, and bio.
+ * - If the profile belongs to the currently logged-in user, includes a form to update the profile image and bio.
+ * - Displays the user's auction listings, or a message if no listings are available.
+ * - Calls `createCards` to render the listings in the container.
+ *
+ * @example
+ * const profile = { name: "JohnDoe", avatar: { url: "...", alt: "..." }, bio: "..." };
+ * const listings = { data: [...] };
+ * createProfile(profile, listings); // Renders the user's profile and listings on the profile page
+ */
 export function createProfile(profile, listings) {
   const profileStorage = load("personalProfile");
   const profileStorageName = profileStorage.name;

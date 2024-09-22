@@ -4,6 +4,29 @@ import { updateTimeAgo } from "../helpers/calculateBidTime";
 import { startCountdown } from "../helpers/countdown";
 import { isExpired } from "../helpers/isExpired";
 import { load } from "../localstorage/load";
+
+/**
+ * Dynamically creates and displays the details of a single auction listing on the post page.
+ *
+ * This function generates the layout and content for a single auction listing, including the listing's media gallery, seller information, bid history, and bid input form. If the listing is expired, it displays the winner or a message indicating that no bids were placed. If the listing is active, it allows users to place bids.
+ *
+ * @function createPost
+ *
+ * @param {object} listing - The auction listing object containing media, seller, and bid information.
+ *
+ * @returns {void} This function does not return a value, but it modifies the DOM by rendering the listing details and bid functionality.
+ *
+ * @description
+ * - Clears the `main` container and populates it with the listing details, including title, description, and media gallery.
+ * - Displays bid information, seller profile, and handles bid submission if the listing is active.
+ * - If the listing is expired, shows the winning bid or a message indicating no bids were placed.
+ * - Adds event listeners to enable thumbnail switching and bid submission.
+ * - If the user viewing the page is the seller, a delete button is also provided to remove the listing.
+ *
+ * @example
+ * const listing = { title: "Vintage Car", media: [...], seller: { name: "JohnDoe", avatar: {...} }, bids: [...], endsAt: "2023-09-30T12:00:00Z" };
+ * createPost(listing); // Renders the auction listing on the post page
+ */
 export function createPost(listing) {
   const container = document.querySelector("main");
   container.innerHTML = "";

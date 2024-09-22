@@ -4,6 +4,30 @@ import { calculateTimeLeft } from "../helpers/calculateTimeLeft";
 import { isExpired } from "../helpers/isExpired";
 import { shortenDescription } from "../helpers/shortenDescription";
 
+/**
+ * Dynamically creates and displays auction listing cards in a specified container.
+ *
+ * This function generates cards for each listing in the provided `listings` data array. Each card includes the listing's image, title, description, bids, end date, and a link to the seller's profile. The cards are appended to the specified `container`. If the listing is not expired, a "Bid Now" button is also included.
+ *
+ * @function createCards
+ *
+ * @param {object} listings - An object containing the auction listings data, including media, seller, and bid information.
+ * @param {HTMLElement} container - The DOM element where the generated cards will be appended.
+ *
+ * @returns {void} This function does not return a value, but it modifies the DOM by appending cards to the container.
+ *
+ * @description
+ * - Clears the `container` content before appending the new cards.
+ * - Loops through the `listings` data, generating a card for each listing with its image, title, description, and additional details such as bid count and time remaining.
+ * - If a listing has no image, a placeholder is used.
+ * - Adds event listeners to each card and seller link, handling navigation and profile viewing.
+ * - Displays a "Bid Now" button for active listings that have not yet expired.
+ *
+ * @example
+ * const listings = { data: [...] }; // An array of listing objects
+ * const container = document.querySelector("[data-attribute='container']");
+ * createCards(listings, container); // Renders the auction listing cards in the container
+ */
 export function createCards(listings, container) {
   if (listings.data.length === 0) {
     return;
