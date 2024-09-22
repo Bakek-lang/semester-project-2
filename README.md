@@ -6,19 +6,19 @@ Auction House is a fully functional auction web application where users can list
 
 - [Auction House](#auction-house)
   - [Table of Contents](#table-of-contents)
-- [Project Overview](#project-overview)
-- [Features](#features)
+  - [Project Overview](#project-overview)
+  - [Features](#features)
   - [Technologies Used](#technologies-used)
-- [Setup Instructions](#setup-instructions)
-- [Deployment](#deployment)
-- [Project Management](#project-management)
-- [User Stories](#user-stories)
+  - [Setup Instructions](#setup-instructions)
+  - [Deployment](#deployment)
+  - [Project Management](#project-management)
+  - [User Stories](#user-stories)
 
-# Project Overview
+## Project Overview
 
 Auction House allows users with a stud.noroff.no email address to register, log in, create, bid, and delete auction listings. Users can also update their avatars and bios, and view the profile of others, including their auction listings.
 
-# Features
+## Features
 
 - **User Registration and Login:** Users can register with a stud.noroff.no email and log in to their account.
 - **Create Auction Listings:** Users can create new listings by adding a title, description, image and deadline for the auction.
@@ -37,7 +37,7 @@ Auction House allows users with a stud.noroff.no email address to register, log 
 - **Netlify:** For deployment and hosting.
 - **API:** All auction-related data is managed via an external API.
 
-# Setup Instructions
+## Setup Instructions
 
 To set up the project locally, follow these steps:
 
@@ -71,16 +71,16 @@ npm run build
 npm run preview
 ```
 
-# Deployment
+## Deployment
 
 The project is deployed and hosted on Netlify. You can view the live version of the project at:
 [Auction House](https://auction-house-sp2-bakek.netlify.app/)
 
-# Project Management
+## Project Management
 
 The project used Trello for task management (Kanban board) and Notion for tracking progress (Gantt chart). Figma was used for creating mobile and dekstop prototypes, as well as the style guide.
 
-# User Stories
+## User Stories
 
 - A user with a stud.noroff.no email may register.
 - A registered user may log in.
