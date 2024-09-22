@@ -1,8 +1,6 @@
 export function calculateEndDate(duration, unit) {
   const now = new Date();
 
-  console.log(now);
-
   switch (unit) {
     case "hours":
       now.setHours(now.getHours() + parseInt(duration));

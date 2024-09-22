@@ -6,8 +6,6 @@ import { fetchData } from "./fetch";
 export async function searchListings(search) {
   const apiEndpoint = `${API_BASE}${API_AUCTION}${API_LISTINGS}/search?q=${search}&_bids=true&_seller=true`;
 
-  console.log(apiEndpoint);
-
   try {
     const listings = await fetchData(apiEndpoint);
 
@@ -20,6 +18,6 @@ export async function searchListings(search) {
     displaySearchResults(listings);
     return listings;
   } catch (error) {
-    console.log("Could not fetch search results");
+    console.error("Could not fetch search results: ", error);
   }
 }

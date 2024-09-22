@@ -21,7 +21,6 @@ export function addSellerLinkClickListener(sellerLink) {
     }
 
     const sellerName = sellerLink.textContent;
-    console.log(sellerName);
 
     try {
       const sellerProfile = await fetchData(

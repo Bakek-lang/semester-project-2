@@ -45,10 +45,9 @@ export async function updateSettings(imageUrl, altText, bioText) {
     const updatedProfile = await response.json();
     save("personalProfile", updatedProfile.data);
 
-    console.log(updatedProfile);
     window.location.reload();
   } catch (error) {
-    console.log("Error updating settings: ", error);
+    console.error("Error updating settings: ", error);
     const bioInput = document.querySelector("textarea");
     showError(bioInput, "An error occured while updating your profile");
   }

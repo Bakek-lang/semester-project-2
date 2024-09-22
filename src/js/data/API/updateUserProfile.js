@@ -9,7 +9,6 @@ export async function updateUserProfile() {
   const profile = load("profile");
   const name = profile.name;
   try {
-    console.log(API_BASE + API_AUCTION + API_PROFILES + "/" + name);
     const profile = await fetchData(
       API_BASE + API_AUCTION + API_PROFILES + "/" + name,
       {
@@ -19,7 +18,6 @@ export async function updateUserProfile() {
         },
       }
     );
-    console.log("profile", profile.data);
     save("personalProfile", profile.data);
     renderUserMenu(profile.data);
   } catch (error) {
