@@ -2,6 +2,18 @@
 
 Auction House is a fully functional auction web application where users can list items for auction, place bids, and view profiles of other users. The project is built using TailwindCSS, HTML, and vanilla JavaScript and is part of the Semester Project 2 assignment for a school project. The application interacts with an existing API and focuses on the front-end implementation.
 
+## Table of Contents
+
+- [Auction House](#auction-house)
+  - [Table of Contents](#table-of-contents)
+- [Project Overview](#project-overview)
+- [Features](#features)
+  - [Technologies Used](#technologies-used)
+- [Setup Instructions](#setup-instructions)
+- [Deployment](#deployment)
+- [Project Management](#project-management)
+- [User Stories](#user-stories)
+
 # Project Overview
 
 Auction House allows users with a stud.noroff.no email address to register, log in, create, bid, and delete auction listings. Users can also update their avatars and bios, and view the profile of others, including their auction listings.
@@ -16,7 +28,7 @@ Auction House allows users with a stud.noroff.no email address to register, log 
 - **Search:** Even unregistered users can search through auction listings.
 - **Logout:** Users can securely log out and will lose access to other pages except for the home, login, and register pages.
 
-# Technologies Used
+## Technologies Used
 
 - **TailwindCSS:** For styling the UI.
 - **Vite:** For bundling and development.
@@ -30,9 +42,11 @@ Auction House allows users with a stud.noroff.no email address to register, log 
 To set up the project locally, follow these steps:
 
 1. **Clone the repository**:
-   ```
-   git clone https://github.com/Bakek-lang/semester-project-2.git
-   ```
+
+```
+git clone https://github.com/Bakek-lang/semester-project-2.git
+```
+
 2. **Install dependencies:**:
 
 ```
