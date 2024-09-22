@@ -5,6 +5,27 @@ import { renderUserMenu } from "../../ui/renderUserMenu";
 import { API_AUCTION, API_BASE, API_KEY, API_PROFILES } from "./constants";
 import { fetchData } from "./fetch";
 
+/**
+ * Fetches and updates the user's profile information, then updates the user menu with the new data.
+ *
+ * This function retrieves the latest profile data from the API and saves it in localStorage. It then renders the updated user menu with the fetched profile data. Additionally, it sets up an event listener for the logout button, which triggers the logout process when clicked.
+ *
+ * @async
+ * @function updateUserProfile
+ *
+ * @returns {Promise<void>} A promise that resolves once the profile has been updated and the user menu is rendered.
+ *
+ * @throws {Error} Will throw an error if the fetch request fails.
+ *
+ * @description
+ * - Fetches the user's profile from the API using the stored username.
+ * - Updates localStorage with the new profile data.
+ * - Renders the user menu with the updated profile information.
+ * - Adds an event listener to the logout button to handle user logout.
+ *
+ * @example
+ * await updateUserProfile(); // Updates profile and renders user menu
+ */
 export async function updateUserProfile() {
   const profile = load("profile");
   const name = profile.name;

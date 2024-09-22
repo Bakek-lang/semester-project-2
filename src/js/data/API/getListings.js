@@ -2,6 +2,31 @@ import { sortListingsByExpiration } from "../../helpers/sortListings.js";
 import { API_AUCTION, API_BASE, API_LISTINGS } from "./constants.js";
 import { fetchData } from "./fetch.js";
 
+/**
+ * Fetches all auction listings from the API, including bids and seller details, and filters out listings without media.
+ *
+ * This function retrieves auction listings from multiple pages by sending multiple fetch requests.
+ * It filters out listings that do not have valid media (image URLs) and sorts the remaining listings by expiration date.
+ *
+ * @async
+ * @function fetchAllListings
+ *
+ * @returns {Promise<{data: object[]}>} A promise that resolves to an object containing an array of sorted listings.
+ * The listings are filtered to include only those with valid media (image URLs) and sorted by expiration date.
+ *
+ * @throws {Error} If any fetch request fails or an invalid response is returned from the API.
+ *
+ * @description
+ * - The function fetches listings 100 at a time, starting with the first page.
+ * - It continues to fetch listings from subsequent pages until all pages are processed.
+ * - Listings without media or valid image URLs are filtered out.
+ * - The valid listings are then sorted by their expiration date in descending order.
+ *
+ * @example
+ * const { data } = await fetchAllListings();
+ * console.log(data); // Outputs an array of valid and sorted auction listings
+ */
+
 export async function fetchAllListings() {
   let allListings = [];
   let currentPage = 1;

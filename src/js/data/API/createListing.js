@@ -5,6 +5,26 @@ import { calculateEndDate } from "../../helpers/calculateEndDate";
 import { load } from "../../localstorage/load";
 import { API_AUCTION, API_BASE, API_KEY, API_LISTINGS } from "./constants";
 
+/**
+ * Handles the creation of a new auction listing.
+ *
+ * The function listens for the submission of a form and validates input fields.
+ * If the input is valid, it sends a POST request to the API to create a new auction listing.
+ * The listing includes the title, description, media (image URLs and alt text), and the auction's end date.
+ *
+ * @async
+ * @function createListing
+ *
+ * @returns {void} This function does not return a value, but redirects to the home page on success.
+ *
+ * @description This function performs the following steps:
+ *  1. Attaches an event listener to the listing form submit event.
+ *  2. Validates form inputs (title, description, media URLs, alt text, auction duration).
+ *  3. Constructs a media array that contains images and their descriptions.
+ *  4. Calculates the auction's end date using the provided duration and unit.
+ *  5. Sends a POST request to the auction API to create a new listing.
+ *  6. Redirects the user to the homepage on success or shows error messages on failure.
+ */
 export function createListing() {
   const createListingForm = document.getElementById("create-listing-form");
 
