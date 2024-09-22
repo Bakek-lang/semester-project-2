@@ -66,7 +66,6 @@ export function createListing() {
       }
 
       const endsAtValue = calculateEndDate(durationValue, unitValue);
-      console.log("Ends at: ", endsAtValue);
 
       const mediaArray = [];
 
@@ -107,8 +106,6 @@ export function createListing() {
         endsAt: endsAtValue,
       };
 
-      console.log("data: ", data, "apiendpoint:", apiEndpoint);
-
       try {
         const response = await fetch(apiEndpoint, {
           method: "POST",
@@ -121,18 +118,14 @@ export function createListing() {
         });
 
         if (!response.ok) {
-          console.error("Failed to create listing: ", error);
           showError(
             document.getElementById("listing-error"),
             "An error occured while creating the post"
           );
         }
 
-        console.log(response);
-
         window.location.href = "/";
       } catch (error) {
-        console.error("Could not create listing, error: ", error);
         showError(
           document.getElementById("listing-error"),
           "An error occured while creating the post"

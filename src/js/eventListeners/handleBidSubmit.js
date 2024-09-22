@@ -61,7 +61,6 @@ export function handleBidSubmit(listing) {
         console.error("Failed to make bid: ", error);
       }
 
-      console.log("response: ", response);
       window.location.reload();
     } catch (error) {
       console.error("Could not make bid on listing: ", error);

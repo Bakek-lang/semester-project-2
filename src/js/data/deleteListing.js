@@ -19,6 +19,6 @@ export async function deleteListing(id) {
 
     window.location.href = "/";
   } catch (error) {
-    console.log("Catched error: ", error);
+    console.error("Catched error: ", error);
   }
 }

@@ -5,11 +5,8 @@ import { startCountdown } from "../helpers/countdown";
 import { isExpired } from "../helpers/isExpired";
 import { load } from "../localstorage/load";
 export function createPost(listing) {
-  console.log("this is listing on post specific", listing);
   const container = document.querySelector("main");
   container.innerHTML = "";
-
-  // reverse bids
 
   const reverseBids = listing.bids.reverse();
 
@@ -301,7 +298,6 @@ export function createPost(listing) {
   }
 
   contentContainer.append(sellerDiv);
-  // flexContainer.append(sellerDiv);
   const sellerLinkTag = contentContainer.querySelector(
     "[data-attribute='seller-link']"
   );
@@ -384,7 +380,6 @@ export function createPost(listing) {
     });
 
     contentContainer.append(bidsContainer);
-    // flexContainer.append(bidsContainer);
   }
 
   flexContainer.append(contentContainer);

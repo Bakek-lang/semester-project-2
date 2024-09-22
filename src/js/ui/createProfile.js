@@ -5,7 +5,6 @@ import { load } from "../localstorage/load";
 import { createCards } from "./createCard";
 
 export function createProfile(profile, listings) {
-  // for the if statement
   const profileStorage = load("personalProfile");
   const profileStorageName = profileStorage.name;
 
@@ -83,9 +82,6 @@ export function createProfile(profile, listings) {
       if (isValid) {
         updateSettings(imageUrl, imageAlt, bioText);
       }
-      // update img and bio
-      console.log("Image URL:", imageUrl);
-      console.log("Bio:", bioText);
     };
 
     const imageUploadContainer = document.createElement("div");
