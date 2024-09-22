@@ -5,7 +5,6 @@ import { load } from "../localstorage/load";
 import { createCards } from "./createCard";
 
 export function createProfile(profile, listings) {
-  // for the if statement
   const profileStorage = load("personalProfile");
   const profileStorageName = profileStorage.name;
 

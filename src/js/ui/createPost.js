@@ -8,8 +8,6 @@ export function createPost(listing) {
   const container = document.querySelector("main");
   container.innerHTML = "";
 
-  // reverse bids
-
   const reverseBids = listing.bids.reverse();
 
   const flexContainer = document.createElement("div");
@@ -300,7 +298,6 @@ export function createPost(listing) {
   }
 
   contentContainer.append(sellerDiv);
-  // flexContainer.append(sellerDiv);
   const sellerLinkTag = contentContainer.querySelector(
     "[data-attribute='seller-link']"
   );
@@ -383,7 +380,6 @@ export function createPost(listing) {
     });
 
     contentContainer.append(bidsContainer);
-    // flexContainer.append(bidsContainer);
   }
 
   flexContainer.append(contentContainer);
